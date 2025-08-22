@@ -61,7 +61,7 @@ const BrandInfo: React.FC<BrandInfoProps> = ({
             
             tl.to(element, {
                textContent: target,
-               duration: 2,
+               duration: 0.7,
                ease: 'power2.out',
                snap: { textContent: 1 },
                onUpdate: function () {
