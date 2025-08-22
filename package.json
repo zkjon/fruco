@@ -9,7 +9,7 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "lint": "eslint ."
+    "lint": "eslint . && echo '✅ No ESLint errors found! Code looks good.'"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
