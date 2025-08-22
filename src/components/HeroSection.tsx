@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
-import { useHeroEntrance } from '../hooks/useGSAP';
-import logoFruco from '../assets/logo_fruco.avif';
+import { useHeroEntrance } from '@/hooks/useGSAP';
+import logoFruco from '@/assets/logo_fruco.avif';
 
 interface HeroSectionProps {
   logoSrc?: string;
@@ -75,7 +75,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         <div className="mb-12">
           <img 
             ref={logoRef}
-            src={logoSrc} 
+            src={logoSrc?.toString() ?? ''}
             alt="Fruco Logo" 
             className="mx-auto max-w-xs md:max-w-sm lg:max-w-md transition-transform duration-300 ease-out"
             style={{ willChange: 'transform' }}

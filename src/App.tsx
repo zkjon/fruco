@@ -1,15 +1,15 @@
 import  { useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useSmoothScroll } from './hooks/useGSAP';
-import { refreshScrollTrigger } from './utils/animations';
+import { useSmoothScroll } from '@/hooks/useGSAP';
+import { refreshScrollTrigger } from '@/utils/animations';
 
 // Componentes
-import NavBar from './components/NavBar';
-import HeroSection from './components/HeroSection';
-import ProductShowcase from './components/ProductShowcase';
-import BrandInfo from './components/BrandInfo';
-import CallToAction from './components/CallToAction';
+import NavBar from '@/components/NavBar';
+import HeroSection from '@/components/HeroSection';
+import ProductShowcase from '@/components/ProductShowcase';
+import BrandInfo from '@/components/BrandInfo';
+import CallToAction from '@/components/CallToAction';
 
 // Registrar plugins de GSAP
 gsap.registerPlugin(ScrollTrigger);

@@ -4,10 +4,10 @@ import { useProductGrid, useProductHover, useFadeIn } from '../hooks/useGSAP';
 import { gsap } from 'gsap';
 
 // Importar imágenes de productos
-import frucoArtesano from '../assets/fruco_artesano.avif';
-import frucoClasico from '../assets/fruco_clasico.avif';
-import frucoEco from '../assets/fruco_eco.avif';
-import frucoPastaPizza from '../assets/fruco_pasta_pizza.avif';
+import frucoArtesano from '@/assets/fruco_artesano.avif';
+import frucoClasico from '@/assets/fruco_clasico.avif';
+import frucoEco from '@/assets/fruco_eco.avif';
+import frucoPastaPizza from '@/assets/fruco_pasta_pizza.avif';
 
 interface Product {
   id: string;
