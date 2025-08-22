@@ -75,7 +75,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         <div className="mb-12">
           <img 
             ref={logoRef}
-            src={logoSrc?.toString() ?? ''}
+            src={logoSrc}
             alt="Fruco Logo" 
             className="mx-auto max-w-xs md:max-w-sm lg:max-w-md transition-transform duration-300 ease-out"
             style={{ willChange: 'transform' }}
