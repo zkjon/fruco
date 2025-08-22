@@ -191,23 +191,6 @@ const BrandInfo: React.FC<BrandInfoProps> = ({
             </div>
          </div>
 
-         {/* Elementos de fondo */}
-         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            {/* Gradientes de fondo */}
-            <div className="absolute top-0 left-1/4 w-96 h-96 bg-fruco-green/5 rounded-full blur-3xl" />
-            <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-fruco-red/5 rounded-full blur-3xl" />
-
-            {/* Puntos decorativos */}
-            <div className="absolute top-1/3 left-10 w-2 h-2 bg-fruco-green/40 rounded-full animate-pulse" />
-            <div
-               className="absolute bottom-1/3 right-10 w-3 h-3 bg-fruco-red/40 rounded-full animate-pulse"
-               style={{ animationDelay: '1s' }}
-            />
-            <div
-               className="absolute top-2/3 left-1/3 w-1 h-1 bg-white/30 rounded-full animate-pulse"
-               style={{ animationDelay: '2s' }}
-            />
-         </div>
       </section>
    );
 };
