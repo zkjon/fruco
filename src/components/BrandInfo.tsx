@@ -38,7 +38,9 @@ const BrandInfo: React.FC<BrandInfoProps> = ({
    useEffect(() => {
       if (!statsRef.current) return;
 
-      const numberElements = statsRef.current.querySelectorAll('.animate-number');
+      // Guardar referencia actual para usar en cleanup
+      const currentStatsRef = statsRef.current;
+      const numberElements = currentStatsRef.querySelectorAll('.animate-number');
       
       if (numberElements.length > 0) {
          // Establecer valores iniciales
@@ -49,7 +51,7 @@ const BrandInfo: React.FC<BrandInfoProps> = ({
          // Crear animación con ScrollTrigger
          const tl = gsap.timeline({
             scrollTrigger: {
-               trigger: statsRef.current,
+               trigger: currentStatsRef,
                start: 'top 80%',
                end: 'bottom 20%',
                toggleActions: 'play none none reverse'
@@ -76,7 +78,7 @@ const BrandInfo: React.FC<BrandInfoProps> = ({
 
       return () => {
          ScrollTrigger.getAll().forEach(trigger => {
-            if (trigger.trigger === statsRef.current) {
+            if (trigger.trigger === currentStatsRef) {
                trigger.kill();
             }
          });

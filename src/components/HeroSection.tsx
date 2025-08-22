@@ -10,8 +10,8 @@ interface HeroSectionProps {
 
 const HeroSection: React.FC<HeroSectionProps> = ({
    logoSrc = '/logo_fruco.avif',
-   title = 'Fruco',
-   subtitle = 'Sabores auténticos que despiertan tus sentidos',
+   title = '',
+   subtitle = 'Tradición y sabor desde 1959',
 }) => {
    const logoRef = useRef<HTMLImageElement>(null);
    const titleRef = useRef<HTMLHeadingElement>(null);
