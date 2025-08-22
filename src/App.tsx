@@ -5,6 +5,7 @@ import { useSmoothScroll } from './hooks/useGSAP';
 import { refreshScrollTrigger } from './utils/animations';
 
 // Componentes
+import NavBar from './components/NavBar';
 import HeroSection from './components/HeroSection';
 import ProductShowcase from './components/ProductShowcase';
 import BrandInfo from './components/BrandInfo';
@@ -55,34 +56,8 @@ function App() {
   return (
     <div className="min-h-screen bg-fruco-black text-white overflow-x-hidden">
       {/* Navegación flotante (opcional) */}
-      <nav className="fixed top-8 left-1/2 transform -translate-x-1/2 z-50 hidden md:block">
-        <div className="flex space-x-6 bg-white/10 backdrop-blur-md rounded-full px-6 py-3 border border-white/20">
-          <button 
-            onClick={() => document.getElementById('inicio')?.scrollIntoView({ behavior: 'smooth', block: 'center' })}
-            className="text-white/70 hover:text-white transition-colors duration-300 text-sm font-medium cursor-pointer"
-          >
-            Inicio
-          </button>
-          <button 
-            onClick={() => document.getElementById('productos')?.scrollIntoView({ behavior: 'smooth', block: 'center' })}
-            className="text-white/70 hover:text-white transition-colors duration-300 text-sm font-medium cursor-pointer"
-          >
-            Productos
-          </button>
-          <button 
-            onClick={() => document.getElementById('marca')?.scrollIntoView({ behavior: 'smooth', block: 'center' })}
-            className="text-white/70 hover:text-white transition-colors duration-300 text-sm font-medium cursor-pointer"
-          >
-            Marca
-          </button>
-          <button 
-            onClick={() => document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth', block: 'center' })}
-            className="text-white/70 hover:text-white transition-colors duration-300 text-sm font-medium cursor-pointer"
-          >
-            Contacto
-          </button>
-        </div>
-      </nav>
+      <NavBar />
+
 
       {/* Secciones principales */}
       <main>
