@@ -1,69 +1,83 @@
-# React + TypeScript + Vite
+# Fruco Land 🍅
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Sitio web oficial de Fruco, la marca de salsas de tomate con más de 65 años de tradición en Colombia.
 
-Currently, two official plugins are available:
+## Sobre Fruco
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Fruco nació en 1959 con una misión sencilla: llevar a cada hogar productos llenos de sabor y confianza. Comenzamos elaborando zumos que conquistaron generaciones, y hoy seguimos honrando esa historia con una gama de salsas de tomate creadas con el mismo cariño y dedicación de siempre.
 
-## Expanding the ESLint configuration
+### Nuestra Historia
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **1959**: Fundación de Fruco con la elaboración de zumos naturales
+- **Más de 65 años**: De tradición y compromiso con la calidad
+- **Presente**: Líder en salsas de tomate artesanales en Colombia
 
-```js
-export default tseslint.config([
-   globalIgnores(['dist']),
-   {
-      files: ['**/*.{ts,tsx}'],
-      extends: [
-         // Other configs...
+### Nuestros Valores
 
-         // Remove tseslint.configs.recommended and replace with this
-         ...tseslint.configs.recommendedTypeChecked,
-         // Alternatively, use this for stricter rules
-         ...tseslint.configs.strictTypeChecked,
-         // Optionally, add this for stylistic rules
-         ...tseslint.configs.stylisticTypeChecked,
+- 🌱 **Tradición**: Más de 65 años elaborando productos con cariño
+- 🍅 **Calidad**: Tomates cultivados por nuestros propios agricultores
+- 👨‍🌾 **Artesanal**: Elaboración con dedicación y sabiduría tradicional
+- 💚 **Compromiso**: Con la autenticidad y lo honesto
 
-         // Other configs...
-      ],
-      languageOptions: {
-         parserOptions: {
-            project: ['./tsconfig.node.json', './tsconfig.app.json'],
-            tsconfigRootDir: import.meta.dirname,
-         },
-         // other options...
-      },
-   },
-]);
+### Productos
+
+Nuestra línea de salsas de tomate incluye:
+
+- **Fruco Clásico**: La receta original que conquistó generaciones
+- **Fruco Artesano**: Elaborado con técnicas tradicionales
+- **Fruco Eco**: Compromiso con el medio ambiente
+- **Fruco Brick Frito**: Ideal para sofritos y guisos
+- **Fruco Pasta Pizza**: Perfecta para tus recetas italianas
+
+## Tecnología
+
+Este sitio web está construido con:
+
+- **Astro**: Framework moderno para sitios web rápidos
+- **React**: Para componentes interactivos
+- **TypeScript**: Desarrollo tipado y seguro
+- **Tailwind CSS**: Estilos modernos y responsivos
+- **GSAP**: Animaciones fluidas y profesionales
+- **Bun**: Gestor de paquetes rápido y eficiente
+
+## Desarrollo
+
+### Instalación
+
+```bash
+# Clonar el repositorio
+git clone https://github.com/tu-usuario/fruco.git
+
+# Instalar dependencias
+bun install
+
+# Ejecutar en modo desarrollo
+bun run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Scripts Disponibles
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x';
-import reactDom from 'eslint-plugin-react-dom';
+```bash
+# Desarrollo
+bun run dev
 
-export default tseslint.config([
-   globalIgnores(['dist']),
-   {
-      files: ['**/*.{ts,tsx}'],
-      extends: [
-         // Other configs...
-         // Enable lint rules for React
-         reactX.configs['recommended-typescript'],
-         // Enable lint rules for React DOM
-         reactDom.configs.recommended,
-      ],
-      languageOptions: {
-         parserOptions: {
-            project: ['./tsconfig.node.json', './tsconfig.app.json'],
-            tsconfigRootDir: import.meta.dirname,
-         },
-         // other options...
-      },
-   },
-]);
+# Construcción para producción
+bun run build
+
+# Vista previa de la construcción
+bun run preview
+
+# Linting
+bun run lint
+
+# Formateo de código
+bun run format
 ```
+
+## Contacto
+
+Para más información sobre Fruco y nuestros productos, visita nuestro sitio web oficial.
+
+---
+
+*Fruco - Más de 65 años llevando sabor y tradición a tu mesa* 🍅❤️
