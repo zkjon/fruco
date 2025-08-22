@@ -19,28 +19,31 @@ const defaultProducts: Product[] = [
   {
     id: 'artesano',
     name: 'Fruco Artesano',
-    imageSrc: '/fruco_artesano.avif',
+    imageSrc: '/products/fruco_artesano.avif',
+
     description: 'Elaborado con técnicas tradicionales para un sabor único y auténtico',
     color: 'green'
   },
   {
     id: 'clasico',
     name: 'Fruco Clásico',
-    imageSrc: '/fruco_clasico.avif',
+    imageSrc: '/products/fruco_clasico.avif',
+
     description: 'El sabor original que ha conquistado paladares por generaciones',
     color: 'red'
   },
   {
     id: 'eco',
     name: 'Fruco Eco',
-    imageSrc: '/fruco_eco.avif',
+    imageSrc: '/products/fruco_eco.avif',
+
     description: 'Ingredientes orgánicos para una experiencia natural y sostenible',
     color: 'green'
   },
   {
     id: 'pasta-pizza',
     name: 'Fruco Pasta & Pizza',
-    imageSrc: '/fruco_pasta_pizza.avif',
+    imageSrc: '/products/fruco_pasta_pizza.avif',
     description: 'Perfecta combinación para tus platos italianos favoritos',
     color: 'red'
   }
