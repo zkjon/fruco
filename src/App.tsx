@@ -57,30 +57,30 @@ function App() {
       {/* Navegación flotante (opcional) */}
       <nav className="fixed top-8 left-1/2 transform -translate-x-1/2 z-50 hidden md:block">
         <div className="flex space-x-6 bg-white/10 backdrop-blur-md rounded-full px-6 py-3 border border-white/20">
-          <a 
-            href="#inicio" 
-            className="text-white/70 hover:text-white transition-colors duration-300 text-sm font-medium"
+          <button 
+            onClick={() => document.getElementById('inicio')?.scrollIntoView({ behavior: 'smooth', block: 'center' })}
+            className="text-white/70 hover:text-white transition-colors duration-300 text-sm font-medium cursor-pointer"
           >
             Inicio
-          </a>
-          <a 
-            href="#productos" 
-            className="text-white/70 hover:text-white transition-colors duration-300 text-sm font-medium"
+          </button>
+          <button 
+            onClick={() => document.getElementById('productos')?.scrollIntoView({ behavior: 'smooth', block: 'center' })}
+            className="text-white/70 hover:text-white transition-colors duration-300 text-sm font-medium cursor-pointer"
           >
             Productos
-          </a>
-          <a 
-            href="#marca" 
-            className="text-white/70 hover:text-white transition-colors duration-300 text-sm font-medium"
+          </button>
+          <button 
+            onClick={() => document.getElementById('marca')?.scrollIntoView({ behavior: 'smooth', block: 'center' })}
+            className="text-white/70 hover:text-white transition-colors duration-300 text-sm font-medium cursor-pointer"
           >
             Marca
-          </a>
-          <a 
-            href="#contacto" 
-            className="text-white/70 hover:text-white transition-colors duration-300 text-sm font-medium"
+          </button>
+          <button 
+            onClick={() => document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth', block: 'center' })}
+            className="text-white/70 hover:text-white transition-colors duration-300 text-sm font-medium cursor-pointer"
           >
             Contacto
-          </a>
+          </button>
         </div>
       </nav>
 
