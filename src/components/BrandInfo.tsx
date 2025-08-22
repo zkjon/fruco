@@ -1,6 +1,9 @@
 import React, { useRef, useEffect, RefObject } from 'react';
 import { useFadeIn, useSlideUp, useParallax } from '../hooks/useGSAP';
 import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 interface BrandInfoProps {
    content?: string;
@@ -23,6 +26,7 @@ const BrandInfo: React.FC<BrandInfoProps> = ({
    const contentRef = useRef<HTMLParagraphElement>(null);
    const highlightsRef = useRef<HTMLDivElement>(null);
    const decorativeRef = useRef<HTMLDivElement>(null);
+   const statsRef = useRef<HTMLDivElement>(null);
 
    // Animaciones
    useFadeIn(titleRef as RefObject<HTMLElement>, { scrollTrigger: { start: 'top 80%' } });
@@ -30,36 +34,53 @@ const BrandInfo: React.FC<BrandInfoProps> = ({
    useSlideUp(highlightsRef as RefObject<HTMLElement>, 0.2);
    useParallax(decorativeRef as RefObject<HTMLElement>, 0.3);
 
-   // Animación de contador para números
+   // Animación de contador para números con ScrollTrigger
    useEffect(() => {
-      const timer = setTimeout(() => {
-         const numberElements = containerRef.current?.querySelectorAll('.animate-number');
+      if (!statsRef.current) return;
 
-         if (numberElements) {
-            numberElements.forEach(element => {
-               const target = parseInt(element.textContent || '0');
-               const duration = 2;
+      const numberElements = statsRef.current.querySelectorAll('.animate-number');
+      
+      if (numberElements.length > 0) {
+         // Establecer valores iniciales
+         numberElements.forEach(element => {
+            element.textContent = '0';
+         });
 
-               // Establecer el valor inicial
-               element.textContent = '0';
+         // Crear animación con ScrollTrigger
+         const tl = gsap.timeline({
+            scrollTrigger: {
+               trigger: statsRef.current,
+               start: 'top 80%',
+               end: 'bottom 20%',
+               toggleActions: 'play none none reverse'
+            }
+         });
 
-               gsap.to(element, {
-                  textContent: target,
-                  duration,
-                  ease: 'power2.out',
-                  snap: { textContent: 1 },
-                  onUpdate: function () {
-                     element.textContent = Math.round(this.targets()[0].textContent).toString();
-                  },
-                  onComplete: () => {
-                     element.textContent = target.toString();
-                  },
-               });
-            });
-         }
-      }, 500);
+         numberElements.forEach((element, index) => {
+            const target = parseInt(element.getAttribute('data-target') || '0');
+            
+            tl.to(element, {
+               textContent: target,
+               duration: 2,
+               ease: 'power2.out',
+               snap: { textContent: 1 },
+               onUpdate: function () {
+                  element.textContent = Math.round(this.targets()[0].textContent).toString();
+               },
+               onComplete: () => {
+                  element.textContent = target.toString();
+               },
+            }, index * 0.2);
+         });
+      }
 
-      return () => clearTimeout(timer);
+      return () => {
+         ScrollTrigger.getAll().forEach(trigger => {
+            if (trigger.trigger === statsRef.current) {
+               trigger.kill();
+            }
+         });
+      };
    }, []);
 
    return (
@@ -90,10 +111,10 @@ const BrandInfo: React.FC<BrandInfoProps> = ({
                   </p>
 
                   {/* Estadísticas */}
-                  <div className="grid grid-cols-2 gap-8 pt-8">
+                  <div ref={statsRef} className="grid grid-cols-2 gap-8 pt-8">
                      <div className="text-center">
                         <div className="text-4xl md:text-5xl font-bold text-fruco-green mb-2">
-                           <span className="animate-number">65</span>+
+                           <span className="animate-number" data-target="65">65</span>+
                         </div>
                         <p className="text-gray-400 text-sm uppercase tracking-wider">
                            Años de Tradición
@@ -101,7 +122,7 @@ const BrandInfo: React.FC<BrandInfoProps> = ({
                      </div>
                      <div className="text-center">
                         <div className="text-4xl md:text-5xl font-bold text-fruco-red mb-2">
-                           <span className="animate-number">100</span>%
+                           <span className="animate-number" data-target="100">100</span>%
                         </div>
                         <p className="text-gray-400 text-sm uppercase tracking-wider">Natural</p>
                      </div>
