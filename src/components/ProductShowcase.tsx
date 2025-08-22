@@ -8,7 +8,6 @@ interface Product {
    name: string;
    imageSrc: string;
    description: string;
-   color: 'green' | 'red';
 }
 
 interface ProductShowcaseProps {
@@ -21,38 +20,30 @@ const defaultProducts: Product[] = [
       name: 'Tomate frito',
       imageSrc: '/products/fruco_brick_frito.avif',
       description: 'Un sabor único y auténtico, hecho con ingredientes frescos y de alta calidad',
-      color: 'red',
    },
    {
       id: 'artesano',
       name: 'Artesano',
       imageSrc: '/products/fruco_artesano.avif',
-
       description: 'Elaborado con técnicas tradicionales para un sabor único y auténtico',
-      color: 'green',
    },
    {
       id: 'clasico',
       name: 'Clásico',
       imageSrc: '/products/fruco_clasico.avif',
-
       description: 'El sabor original que ha conquistado paladares por generaciones',
-      color: 'red',
    },
    {
       id: 'eco',
       name: 'Ecológico',
       imageSrc: '/products/fruco_eco.avif',
-
       description: 'Ingredientes orgánicos para una experiencia natural y sostenible',
-      color: 'green',
    },
    {
       id: 'pasta-pizza',
       name: 'Pasta & Pizza',
       imageSrc: '/products/fruco_pasta_pizza.avif',
       description: 'Perfecta combinación para tus platos italianos favoritos',
-      color: 'red',
    },
 ];
 
@@ -84,7 +75,7 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
             });
 
             gsap.to(card, {
-               boxShadow: `0 20px 40px rgba(${product.color === 'green' ? '45, 80, 22' : '196, 30, 58'}, 0.3)`,
+               boxShadow: '0 20px 40px rgba(255, 255, 255, 0.3)',
                duration: 0.3,
                ease: 'power2.out',
             });
@@ -118,7 +109,7 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
             card.removeEventListener('mouseleave', handleMouseLeave);
          };
       }
-   }, [product.color]);
+   });
 
    return (
       <div
@@ -138,18 +129,6 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
                className="w-full h-full object-cover transition-transform duration-400 p-2"
                style={{ willChange: 'transform' }}
             />
-
-            {/* Overlay con color del producto */}
-            <div
-               className={`absolute inset-0 bg-gradient-to-t from-${product.color === 'green' ? 'fruco-green' : 'fruco-red'}/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
-            />
-
-            {/* Indicador de color */}
-            <div
-               className={`absolute top-4 right-4 w-3 h-3 rounded-full ${
-                  product.color === 'green' ? 'bg-fruco-green' : 'bg-fruco-red'
-               } shadow-lg`}
-            />
          </div>
 
          {/* Contenido */}
@@ -163,9 +142,7 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
 
             {/* Línea decorativa */}
             <div
-               className={`mt-4 h-0.5 w-0 group-hover:w-full transition-all duration-500 ${
-                  product.color === 'green' ? 'bg-fruco-green' : 'bg-fruco-red'
-               }`}
+               className="mt-4 h-0.5 w-0 group-hover:w-full transition-all duration-500 bg-fruco-gold"
             />
          </div>
       </div>
@@ -212,12 +189,6 @@ const ProductShowcase: React.FC<ProductShowcaseProps> = ({ products = defaultPro
                   excepcional.
                </p>
             </div>
-         </div>
-
-         {/* Elementos decorativos de fondo */}
-         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="absolute top-1/4 -left-20 w-40 h-40 bg-fruco-green/5 rounded-full blur-3xl" />
-            <div className="absolute bottom-1/4 -right-20 w-60 h-60 bg-fruco-red/5 rounded-full blur-3xl" />
          </div>
       </section>
    );

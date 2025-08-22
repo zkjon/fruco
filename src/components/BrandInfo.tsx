@@ -119,7 +119,7 @@ const BrandInfo: React.FC<BrandInfoProps> = ({
                   {/* Estadísticas */}
                   <div ref={statsRef} className="grid grid-cols-2 gap-8 pt-8">
                      <div className="text-center">
-                        <div className="text-4xl md:text-5xl font-bold text-fruco-green mb-2">
+                        <div className="text-4xl md:text-5xl font-bold text-white mb-2">
                            <span className="animate-number" data-target="65">
                               65
                            </span>
@@ -130,7 +130,7 @@ const BrandInfo: React.FC<BrandInfoProps> = ({
                         </p>
                      </div>
                      <div className="text-center">
-                        <div className="text-4xl md:text-5xl font-bold text-fruco-red mb-2">
+                        <div className="text-4xl md:text-5xl font-bold text-white mb-2">
                            <span className="animate-number" data-target="100">
                               100
                            </span>
@@ -149,16 +149,13 @@ const BrandInfo: React.FC<BrandInfoProps> = ({
                      className="space-y-6"
                      style={{ willChange: 'transform, opacity' }}
                   >
-                     {highlights.map((highlight, index) => (
+                     {highlights.map((highlight) => (
                         <div
-                           key={index}
                            className="flex items-center space-x-4 group cursor-pointer"
                         >
                            {/* Icono decorativo */}
                            <div
-                              className={`w-3 h-3 rounded-full ${
-                                 index % 2 === 0 ? 'bg-fruco-green' : 'bg-fruco-red'
-                              } group-hover:scale-125 transition-transform duration-300`}
+                              className={`w-3 h-3 rounded-full bg-white group-hover:scale-125 transition-transform duration-300`}
                            />
 
                            {/* Texto */}
@@ -170,19 +167,15 @@ const BrandInfo: React.FC<BrandInfoProps> = ({
                   </div>
 
                   {/* Elemento decorativo */}
-                  <div
-                     ref={decorativeRef}
-                     className="relative mt-12"
-                     style={{ willChange: 'transform' }}
-                  >
+                  <div ref={decorativeRef} className="relative mt-12" style={{ willChange: 'transform' }}>
                      {/* Círculos decorativos */}
                      <div className="relative w-64 h-64 mx-auto">
                         <div
-                           className="absolute inset-0 border-2 border-fruco-green/20 rounded-full animate-spin"
+                           className="absolute inset-0 border-2 border-white/20 rounded-full animate-spin"
                            style={{ animationDuration: '20s' }}
                         />
                         <div
-                           className="absolute inset-4 border-2 border-fruco-red/20 rounded-full animate-spin"
+                           className="absolute inset-4 border-2 border-white/20 rounded-full animate-spin"
                            style={{
                               animationDuration: '15s',
                               animationDirection: 'reverse',
@@ -192,23 +185,17 @@ const BrandInfo: React.FC<BrandInfoProps> = ({
                            className="absolute inset-8 border-2 border-white/10 rounded-full animate-spin"
                            style={{ animationDuration: '25s' }}
                         />
-
                         {/* Centro */}
                         <div className="absolute inset-0 flex items-center justify-center">
-                           <div className="w-16 h-16 bg-gradient-to-br from-fruco-green to-fruco-red rounded-full opacity-80 animate-pulse" />
+                           <div className="w-16 h-16 bg-gradient-to-br from-white to-fruco-gold rounded-full opacity-80 animate-pulse" />
                         </div>
                      </div>
                   </div>
+                  
                </div>
             </div>
          </div>
 
-         {/* Elementos de fondo */}
-         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            {/* Gradientes de fondo */}
-            <div className="absolute top-0 left-1/4 w-96 h-96 bg-fruco-green/7 rounded-full blur-3xl" />
-            <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-fruco-red/5 rounded-full blur-3xl" />
-         </div>
       </section>
    );
 };
