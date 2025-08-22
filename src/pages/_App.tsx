@@ -66,19 +66,19 @@ function App() {
             <HeroSection />
 
             {/* Separador visual */}
-            <div className="h-px bg-gradient-to-r from-transparent via-white/20 to-transparent mx-auto max-w-4xl" />
+            <div className="h-px bg-gradient-to-r from-transparent via-fruco-gold/20 to-transparent mx-auto max-w-4xl" />
 
             {/* Product Showcase */}
             <ProductShowcase />
 
             {/* Separador visual */}
-            <div className="h-px bg-gradient-to-r from-transparent via-fruco-green/30 to-transparent mx-auto max-w-4xl" />
+            <div className="h-px bg-gradient-to-r from-transparent via-fruco-gold/30 to-transparent mx-auto max-w-4xl" />
 
             {/* Brand Info */}
             <BrandInfo />
 
             {/* Separador visual */}
-            <div className="h-px bg-gradient-to-r from-transparent via-fruco-red/30 to-transparent mx-auto max-w-4xl" />
+            <div className="h-px bg-gradient-to-r from-transparent via-fruco-gold/30 to-transparent mx-auto max-w-4xl" />
 
             {/* Call to Action */}
             <CallToAction />
