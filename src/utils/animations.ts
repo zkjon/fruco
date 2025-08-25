@@ -185,7 +185,8 @@ export const productGridAnimation = (container: string | Element) => {
          scrollTrigger: {
             trigger: container,
             start: 'top 70%',
-            toggleActions: 'play none none reverse',
+            toggleActions: 'play none none none',
+            once: true,
          },
       }
    );
