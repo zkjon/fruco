@@ -84,6 +84,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                   alt="Fruco Logo"
                   className="mx-auto max-w-xs md:max-w-sm lg:max-w-md transition-transform duration-300 ease-out"
                   style={{ willChange: 'transform' }}
+                  width={600}
+                  height={334}
                />
             </div>
 
