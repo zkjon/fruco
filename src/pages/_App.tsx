@@ -9,6 +9,7 @@ import NavBar from '@/components/NavBar';
 import HeroSection from '@/components/HeroSection';
 import ProductShowcase from '@/components/ProductShowcase';
 import History from '@/components/History';
+import VisionMision from '@/components/VisionAndMision';
 import CallToAction from '@/components/CallToAction';
 import Footer from '@/components/Footer';
 
@@ -76,6 +77,12 @@ function App() {
 
             {/* Brand Info */}
             <History />
+
+            {/* Separador visual */}
+            <div className="h-px bg-gradient-to-r from-transparent via-fruco-gold/30 to-transparent mx-auto max-w-4xl" />
+
+            {/* Visión y Misión */}
+            <VisionMision />
 
             {/* Separador visual */}
             <div className="h-px bg-gradient-to-r from-transparent via-fruco-gold/30 to-transparent mx-auto max-w-4xl" />
