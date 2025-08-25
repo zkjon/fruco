@@ -6,6 +6,7 @@ import { refreshScrollTrigger } from '@/utils/animations';
 
 // Componentes
 import NavBar from '@/components/NavBar';
+import Spliter from '@/components/Spliter';
 import HeroSection from '@/components/HeroSection';
 import ProductShowcase from '@/components/ProductShowcase';
 import History from '@/components/History';
@@ -67,25 +68,25 @@ function App() {
             <HeroSection />
 
             {/* Separador visual */}
-            <div className="h-px bg-gradient-to-r from-transparent via-fruco-gold/20 to-transparent mx-auto max-w-4xl" />
+            <Spliter />
 
             {/* Product Showcase */}
             <ProductShowcase />
 
             {/* Separador visual */}
-            <div className="h-px bg-gradient-to-r from-transparent via-fruco-gold/30 to-transparent mx-auto max-w-4xl" />
+            <Spliter />
 
-            {/* Brand Info */}
+            {/* History */}
             <History />
 
             {/* Separador visual */}
-            <div className="h-px bg-gradient-to-r from-transparent via-fruco-gold/30 to-transparent mx-auto max-w-4xl" />
+            <Spliter />
 
             {/* Visión y Misión */}
             <VisionMision />
 
             {/* Separador visual */}
-            <div className="h-px bg-gradient-to-r from-transparent via-fruco-gold/30 to-transparent mx-auto max-w-4xl" />
+            <Spliter />
 
             {/* Call to Action */}
             <CallToAction />
