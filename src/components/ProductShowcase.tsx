@@ -1,8 +1,7 @@
-import { useRef, useEffect } from 'preact/hooks';
-
-import { useProductGrid, useProductHover, useFadeIn } from '../hooks/useGSAP';
+import { useRef } from 'preact/hooks';
+import { memo } from 'preact/compat';
+import { useProductGrid, useFadeIn } from '../hooks/useGSAP';
 import { useLazyImage } from '../hooks/useLazyImage';
-import { gsap } from 'gsap';
 
 interface Product {
    id: string;
@@ -42,74 +41,15 @@ const defaultProducts: Product[] = [
    },
 ];
 
-const ProductCard = ({ product }: { product: Product }) => {
+const ProductCard = memo(({ product }: { product: Product }) => {
    const cardRef = useRef<HTMLDivElement>(null);
-   const contentRef = useRef<HTMLDivElement>(null);
    
-   // Lazy loading mejorado
+   // Lazy loading optimizado
    const { imgRef: imageRef, isLoaded, isInView } = useLazyImage({
-      rootMargin: '100px',
+      rootMargin: '50px',
       threshold: 0.1
    });
-
-   // Aplicar efectos hover
-   useProductHover(cardRef);
-
-   useEffect(() => {
-      if (cardRef.current && imageRef.current && contentRef.current) {
-         const card = cardRef.current;
-         const image = imageRef.current;
-         const content = contentRef.current;
-
-         const handleMouseEnter = () => {
-            gsap.to(image, {
-               scale: 1.1,
-               duration: 0.4,
-               ease: 'power2.out',
-            });
-
-            gsap.to(content, {
-               y: -10,
-               duration: 0.3,
-               ease: 'power2.out',
-            });
-
-            gsap.to(card, {
-               boxShadow: '0 20px 40px rgba(255, 255, 255, 0.3)',
-               duration: 0.3,
-               ease: 'power2.out',
-            });
-         };
-
-         const handleMouseLeave = () => {
-            gsap.to(image, {
-               scale: 1,
-               duration: 0.4,
-               ease: 'power2.out',
-            });
-
-            gsap.to(content, {
-               y: 0,
-               duration: 0.3,
-               ease: 'power2.out',
-            });
-
-            gsap.to(card, {
-               boxShadow: '0 10px 20px rgba(0, 0, 0, 0.2)',
-               duration: 0.3,
-               ease: 'power2.out',
-            });
-         };
-
-         card.addEventListener('mouseenter', handleMouseEnter);
-         card.addEventListener('mouseleave', handleMouseLeave);
-
-         return () => {
-            card.removeEventListener('mouseenter', handleMouseEnter);
-            card.removeEventListener('mouseleave', handleMouseLeave);
-         };
-      }
-   });
+   // Efectos hover ahora manejados completamente con CSS para mejor rendimiento
 
    return (
       <div
@@ -150,7 +90,7 @@ const ProductCard = ({ product }: { product: Product }) => {
          </div>
 
          {/* Contenido */}
-         <div ref={contentRef} className="p-6 text-center" style={{ willChange: 'transform' }}>
+         <div className="p-6 text-center" style={{ willChange: 'transform' }}>
             <h3 className="text-xl font-bold mb-3 text-white group-hover:text-gray-100 transition-colors duration-300">
                {product.name}
             </h3>
@@ -163,7 +103,7 @@ const ProductCard = ({ product }: { product: Product }) => {
          </div>
       </div>
    );
-};
+});
 
 const ProductShowcase = ({ products = defaultProducts }: ProductShowcaseProps) => {
    const containerRef = useRef<HTMLElement>(null);
