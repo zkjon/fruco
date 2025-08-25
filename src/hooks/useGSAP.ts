@@ -100,10 +100,7 @@ export const useSlideUp = (elementRef: { current: HTMLElement | null }, delay: n
 };
 
 // Hook específico para efectos parallax
-export const useParallax = (
-   elementRef: { current: HTMLElement | null },
-   speed: number = 0.5
-) => {
+export const useParallax = (elementRef: { current: HTMLElement | null }, speed: number = 0.5) => {
    const { addAnimation } = useGSAP();
 
    useEffect(() => {
