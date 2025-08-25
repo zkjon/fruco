@@ -1,4 +1,4 @@
-import { useEffect, useRef, useCallback } from 'react';
+import { useEffect, useRef, useCallback } from 'preact/hooks';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import {
@@ -61,7 +61,7 @@ export const useGSAP = () => {
 
 // Hook específico para animaciones de fade in
 export const useFadeIn = (
-   elementRef: React.RefObject<HTMLElement | null>,
+   elementRef: { current: HTMLElement | null },
    options?: {
       duration?: number;
       delay?: number;
@@ -88,7 +88,7 @@ export const useFadeIn = (
 };
 
 // Hook específico para animaciones de slide up
-export const useSlideUp = (elementRef: React.RefObject<HTMLElement | null>, delay: number = 0) => {
+export const useSlideUp = (elementRef: { current: HTMLElement | null }, delay: number = 0) => {
    const { addAnimation } = useGSAP();
 
    useEffect(() => {
@@ -101,7 +101,7 @@ export const useSlideUp = (elementRef: React.RefObject<HTMLElement | null>, dela
 
 // Hook específico para efectos parallax
 export const useParallax = (
-   elementRef: React.RefObject<HTMLElement | null>,
+   elementRef: { current: HTMLElement | null },
    speed: number = 0.5
 ) => {
    const { addAnimation } = useGSAP();
@@ -116,9 +116,9 @@ export const useParallax = (
 
 // Hook para animación de entrada del hero
 export const useHeroEntrance = (
-   logoRef: React.RefObject<HTMLElement | null>,
-   titleRef: React.RefObject<HTMLElement | null>,
-   subtitleRef: React.RefObject<HTMLElement | null>
+   logoRef: { current: HTMLElement | null },
+   titleRef: { current: HTMLElement | null },
+   subtitleRef: { current: HTMLElement | null }
 ) => {
    const { addAnimation } = useGSAP();
 
@@ -135,7 +135,7 @@ export const useHeroEntrance = (
 };
 
 // Hook para animación de grid de productos
-export const useProductGrid = (containerRef: React.RefObject<HTMLElement | null>) => {
+export const useProductGrid = (containerRef: { current: HTMLElement | null }) => {
    const { addAnimation } = useGSAP();
 
    useEffect(() => {
@@ -147,7 +147,7 @@ export const useProductGrid = (containerRef: React.RefObject<HTMLElement | null>
 };
 
 // Hook para efectos hover en productos
-export const useProductHover = (elementRef: React.RefObject<HTMLElement | null>) => {
+export const useProductHover = (elementRef: { current: HTMLElement | null }) => {
    const { addCleanup } = useGSAP();
 
    useEffect(() => {
@@ -162,7 +162,7 @@ export const useProductHover = (elementRef: React.RefObject<HTMLElement | null>)
 
 // Hook para animaciones personalizadas
 export const useCustomAnimation = (
-   elementRef: React.RefObject<HTMLElement | null>,
+   elementRef: { current: HTMLElement | null },
    animationFn: (element: HTMLElement) => gsap.core.Tween | gsap.core.Timeline
 ) => {
    const { addAnimation } = useGSAP();
@@ -193,7 +193,7 @@ export const useSmoothScroll = () => {
 
 // Hook para animaciones de texto
 export const useTextAnimation = (
-   elementRef: React.RefObject<HTMLElement | null>,
+   elementRef: { current: HTMLElement | null },
    animationType: 'fadeIn' | 'slideUp' | 'typewriter' = 'fadeIn'
 ) => {
    const { addAnimation } = useGSAP();
@@ -219,13 +219,12 @@ export const useTextAnimation = (
 };
 
 // Hook para refresh de ScrollTrigger cuando cambia el contenido
-export const useScrollTriggerRefresh = (dependencies: React.DependencyList) => {
+export const useScrollTriggerRefresh = (dependencies: unknown[]) => {
    useEffect(() => {
       const timer = setTimeout(() => {
          refreshScrollTrigger();
       }, 100);
 
       return () => clearTimeout(timer);
-      // eslint-disable-next-line react-hooks/exhaustive-deps
    }, dependencies);
 };

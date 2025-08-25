@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef } from 'preact/hooks';
 
 export default function NavBar() {
    const [, setHoveredIndex] = useState<number | null>(null);
@@ -12,8 +12,8 @@ export default function NavBar() {
       { label: 'Contacto', target: 'contacto' },
    ];
 
-   const handleMouseEnter = (index: number, event: React.MouseEvent<HTMLButtonElement>) => {
-      const button = event.currentTarget;
+   const handleMouseEnter = (index: number, event: MouseEvent) => {
+      const button = event.currentTarget as HTMLButtonElement;
       const rect = button.getBoundingClientRect();
       const navRect = navRef.current?.getBoundingClientRect();
 

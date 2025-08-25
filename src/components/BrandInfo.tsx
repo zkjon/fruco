@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, RefObject } from 'react';
+import { useRef, useEffect } from 'preact/hooks';
 import { useFadeIn, useSlideUp, useParallax } from '../hooks/useGSAP';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -17,10 +17,10 @@ const defaultHighlights = [
    'Compromiso con la autenticidad y lo honesto',
 ];
 
-const BrandInfo: React.FC<BrandInfoProps> = ({
+const BrandInfo = ({
    content = 'Fruco nació en 1959 con una misión sencilla: llevar a cada hogar productos llenos de sabor y confianza. Comenzamos elaborando zumos que conquistaron generaciones, y hoy seguimos honrando esa historia con una gama de salsas de tomate creadas con el mismo cariño y dedicación de siempre. Nuestros tomates son fruto del trabajo de nuestros propios agricultores, que cuidan la tierra con paciencia y sabiduría, como se ha hecho toda la vida. En Fruco creemos en la tradición, en la calidad que se cultiva día a día y en el compromiso de ofrecer lo mejor.',
    highlights = defaultHighlights,
-}) => {
+}: BrandInfoProps) => {
    const containerRef = useRef<HTMLElement>(null);
    const titleRef = useRef<HTMLHeadingElement>(null);
    const contentRef = useRef<HTMLParagraphElement>(null);
@@ -29,10 +29,10 @@ const BrandInfo: React.FC<BrandInfoProps> = ({
    const statsRef = useRef<HTMLDivElement>(null);
 
    // Animaciones
-   useFadeIn(titleRef as RefObject<HTMLElement>, { scrollTrigger: { start: 'top 80%' } });
-   useFadeIn(contentRef as RefObject<HTMLElement>, { scrollTrigger: { start: 'top 75%' } });
-   useSlideUp(highlightsRef as RefObject<HTMLElement>, 0.2);
-   useParallax(decorativeRef as RefObject<HTMLElement>, 0.3);
+   useFadeIn(titleRef, { scrollTrigger: { start: 'top 80%' } });
+   useFadeIn(contentRef, { scrollTrigger: { start: 'top 75%' } });
+   useSlideUp(highlightsRef, 0.2);
+   useParallax(decorativeRef, 0.3);
 
    // Animación de contador para números con ScrollTrigger
    useEffect(() => {

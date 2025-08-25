@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, RefObject } from 'react';
+import { useRef, useEffect } from 'preact/hooks';
 
 import { useProductGrid, useProductHover, useFadeIn } from '../hooks/useGSAP';
 import { gsap } from 'gsap';
@@ -41,13 +41,13 @@ const defaultProducts: Product[] = [
    },
 ];
 
-const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
+const ProductCard = ({ product }: { product: Product }) => {
    const cardRef = useRef<HTMLDivElement>(null);
    const imageRef = useRef<HTMLImageElement>(null);
    const contentRef = useRef<HTMLDivElement>(null);
 
    // Aplicar efectos hover
-   useProductHover(cardRef as RefObject<HTMLDivElement>);
+   useProductHover(cardRef);
 
    useEffect(() => {
       if (cardRef.current && imageRef.current && contentRef.current) {
@@ -145,14 +145,14 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
    );
 };
 
-const ProductShowcase: React.FC<ProductShowcaseProps> = ({ products = defaultProducts }) => {
+const ProductShowcase = ({ products = defaultProducts }: ProductShowcaseProps) => {
    const containerRef = useRef<HTMLElement>(null);
    const titleRef = useRef<HTMLHeadingElement>(null);
    const gridRef = useRef<HTMLDivElement>(null);
 
    // Animaciones
-   useFadeIn(titleRef as RefObject<HTMLElement>, { scrollTrigger: { start: 'top 85%' } });
-   useProductGrid(gridRef as RefObject<HTMLElement>);
+   useFadeIn(titleRef, { scrollTrigger: { start: 'top 85%' } });
+   useProductGrid(gridRef);
 
    return (
       <section ref={containerRef} className="section-container py-20" id="productos">

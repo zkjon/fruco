@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import { useRef, useEffect } from 'preact/hooks';
 import { useSlideUp } from '../hooks/useGSAP';
 import { gsap } from 'gsap';
 
@@ -12,7 +12,7 @@ interface CallToActionProps {
    };
 }
 
-const CallToAction: React.FC<CallToActionProps> = ({
+const CallToAction = ({
    title = '¿Listo para descubrir el auténtico sabor?',
    subtitle = 'Únete a la familia Fruco y experimenta la tradición en cada bocado. Contáctanos para conocer más sobre nuestros productos y dónde encontrarlos.',
    contactInfo = {
@@ -20,7 +20,7 @@ const CallToAction: React.FC<CallToActionProps> = ({
       phone: '924 37 86 31',
       address: 'Mérida, España',
    },
-}) => {
+}: CallToActionProps) => {
    const containerRef = useRef<HTMLElement>(null);
    const titleRef = useRef<HTMLHeadingElement>(null);
    const subtitleRef = useRef<HTMLParagraphElement>(null);

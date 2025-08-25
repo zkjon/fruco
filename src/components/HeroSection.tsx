@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import { useRef, useEffect } from 'preact/hooks';
 import { useHeroEntrance } from '@/hooks/useGSAP';
 import { gsap } from 'gsap';
 
@@ -8,11 +8,11 @@ interface HeroSectionProps {
    subtitle?: string;
 }
 
-const HeroSection: React.FC<HeroSectionProps> = ({
+const HeroSection = ({
    logoSrc = '/logo_fruco.avif',
    title = '',
    subtitle = 'Tradición y sabor desde 1959',
-}) => {
+}: HeroSectionProps) => {
    const logoRef = useRef<HTMLImageElement>(null);
    const titleRef = useRef<HTMLHeadingElement>(null);
    const subtitleRef = useRef<HTMLParagraphElement>(null);
