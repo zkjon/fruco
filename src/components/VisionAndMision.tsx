@@ -153,7 +153,9 @@ function VisionMision() {
                   Queremos formar parte de tu historia, de tu mesa y de tu vida.
                </p>
 
-               <p className="text-fruco-gold font-medium text-xl md:text-2xl lg:text-3xl italic">
+               <p className="text-fruco-gold font-medium text-xl md:text-2xl lg:text-3xl italic"
+                  style={{ fontFamily: 'Playfair Display, serif' }}
+               >
                   "Porque Fruco, es una familia que elige lo auténtico,
                   <br className="hidden md:block" />
                   lo honesto… lo que está hecho con el corazón"
