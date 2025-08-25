@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://fruco.vercel.app/favicon/site.webmanifest
