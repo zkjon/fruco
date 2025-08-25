@@ -119,7 +119,7 @@ const History = ({
                   {/* Estadísticas */}
                   <div ref={statsRef} className="grid grid-cols-2 gap-8 pt-8">
                      <div className="text-center">
-                        <div className="text-4xl md:text-5xl font-bold text-white mb-2">
+                        <div className="text-4xl md:text-5xl font-bold text-fruco-gold mb-2">
                            <span className="animate-number" data-target="65">
                               65
                            </span>
