@@ -168,7 +168,11 @@ const BrandInfo: React.FC<BrandInfoProps> = ({
                   </div>
 
                   {/* Elemento decorativo */}
-                  <div ref={decorativeRef} className="relative mt-12" style={{ willChange: 'transform' }}>
+                  <div
+                     ref={decorativeRef}
+                     className="relative mt-12"
+                     style={{ willChange: 'transform' }}
+                  >
                      {/* Círculos decorativos */}
                      <div className="relative w-64 h-64 mx-auto">
                         <div
@@ -192,11 +196,9 @@ const BrandInfo: React.FC<BrandInfoProps> = ({
                         </div>
                      </div>
                   </div>
-                  
                </div>
             </div>
          </div>
-
       </section>
    );
 };

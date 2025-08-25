@@ -145,9 +145,7 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
             </p>
 
             {/* Línea decorativa */}
-            <div
-               className="mt-4 h-0.5 w-0 group-hover:w-full transition-all duration-500 bg-fruco-gold"
-            />
+            <div className="mt-4 h-0.5 w-0 group-hover:w-full transition-all duration-500 bg-fruco-gold" />
          </div>
       </div>
    );

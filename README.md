@@ -80,4 +80,4 @@ Para más información sobre Fruco y nuestros productos, visita nuestro sitio we
 
 ---
 
-*Fruco - Más de 65 años llevando sabor y tradición a tu mesa* 🍅❤️
+_Fruco - Más de 65 años llevando sabor y tradición a tu mesa_ 🍅❤️

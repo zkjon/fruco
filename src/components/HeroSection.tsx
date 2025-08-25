@@ -73,7 +73,6 @@ const HeroSection: React.FC<HeroSectionProps> = ({
          className="section-container relative overflow-hidden"
          id="inicio"
       >
-
          {/* Contenido principal */}
          <div className="text-center z-10 relative">
             {/* Logo con animación de entrada */}

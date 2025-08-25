@@ -21,7 +21,6 @@ const CallToAction: React.FC<CallToActionProps> = ({
       address: 'Mérida, España',
    },
 }) => {
-
    const containerRef = useRef<HTMLElement>(null);
    const titleRef = useRef<HTMLHeadingElement>(null);
    const subtitleRef = useRef<HTMLParagraphElement>(null);
@@ -107,8 +106,6 @@ const CallToAction: React.FC<CallToActionProps> = ({
             >
                {subtitle}
             </p>
-
-
 
             {/* Información de contacto */}
             <div
