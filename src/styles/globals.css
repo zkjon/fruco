@@ -1,10 +1,10 @@
 @import 'tailwindcss';
 
 @theme {
-   --color-fruco-green: #2d5016;
-   --color-fruco-red: #c41e3a;
-   --color-fruco-black: #000000;
-   --color-fruco-gold: #ceab41;
+   --fruco-green: oklab(35% -0.07 0.15);
+   --fruco-red: oklab(45% 0.25 0.02);
+   --fruco-black: oklab(0% 0 0);
+   --fruco-gold: oklab(75% 0.02 0.15);
 
    --font-heading: 'Noto Serif Georgian', system-ui, sans-serif;
    --font-body: 'Open Sans', system-ui, sans-serif;
