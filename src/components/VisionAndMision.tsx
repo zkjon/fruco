@@ -188,6 +188,8 @@ function VisionMision() {
                         style={{
                            backgroundColor: isLoaded ? 'transparent' : '#1a1a1a'
                         }}
+                        width={300}
+                        height={300}
                      />
                      <p className="uppercase absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white px-4 py-1 rounded-4xl text-4xl font-bold z-10">
                         {element.title}
