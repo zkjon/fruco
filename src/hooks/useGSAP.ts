@@ -9,7 +9,7 @@ import {
 	productGridAnimation,
 	cleanupScrollTriggers,
 	refreshScrollTrigger,
-} from '../utils/animations';
+} from '@/utils/animations';
 
 // Registrar ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
