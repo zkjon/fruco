@@ -1,4 +1,5 @@
 ---
+import Analytics from '@vercel/analytics/astro';
 const { title } =
 	Astro.props;
 const description =
@@ -78,6 +79,7 @@ const description =
       
    </head>
    <body>
+      <Analytics />
       <slot />
    </body>
 </html>
