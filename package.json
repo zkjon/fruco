@@ -5,10 +5,7 @@
    "type": "module",
    "scripts": {
       "dev": "astro dev",
-      "start": "astro dev",
       "build": "astro check && astro build",
-      "preview": "astro preview",
-      "astro": "astro",
       "lint": "biome lint --write ./src",
       "format": "biome format --write ./src"
    },
