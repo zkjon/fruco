@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
 @theme {
-	--color-fruco-green: oklab(0.33 -0.08 0.1);
-	--color-fruco-red: oklab(0.45 0.27 0.1);
-	--color-fruco-black: oklab(0 0 0);
-	--color-fruco-gold: oklab(0.52 0.01 0.08);
+	--color-fruco-green: oklch(33% 0.13 128.57);
+	--color-fruco-red: oklch(45% 0.29 27.23);
+	--color-fruco-black: oklch(0% 0 0);
+	--color-fruco-gold: oklch(52% 0.08 83.24);
 
 	--font-heading: "Noto Serif Georgian", system-ui, sans-serif;
 	--font-body: "Open Sans", system-ui, sans-serif;
@@ -85,8 +85,8 @@ img {
 .loading-spinner {
 	width: 40px;
 	height: 40px;
-	border: 3px solid rgba(196, 30, 58, 0.1);
-	border-top: 3px solid #bf930d;
+	border: 3px solid oklch(45% 0.29 27.23 / 0.1);
+	border-top: 3px solid oklch(52% 0.08 83.24);
 	border-radius: 50%;
 	animation: spin 1s linear infinite;
 	margin: 20px auto;
