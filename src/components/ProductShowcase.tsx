@@ -47,28 +47,6 @@ const defaultProducts: Product[] = [
 		},
 	},
 	{
-		id: 'artesano',
-		name: 'Artesano',
-		imageSrc: '/products/fruco_artesano.avif',
-		description:
-			'Elaborado con técnicas tradicionales para un sabor único y auténtico',
-		detailedDescription:
-			'Preparado siguiendo recetas tradicionales transmitidas de generación en generación. Cada lote es cuidadosamente elaborado para mantener la autenticidad del sabor casero.',
-		ingredients: [
-			'Tomate natural',
-			'Aceite de oliva virgen extra',
-			'Cebolla',
-			'Pimiento',
-			'Especias naturales',
-		],
-		nutritionalInfo: {
-			calories: '52 kcal',
-			protein: '1.5g',
-			carbs: '9.2g',
-			fat: '1.3g',
-		},
-	},
-	{
 		id: 'clasico',
 		name: 'Clásico',
 		imageSrc: '/products/fruco_clasico.avif',
@@ -89,6 +67,28 @@ const defaultProducts: Product[] = [
 			protein: '1.1g',
 			carbs: '8.8g',
 			fat: '1.2g',
+		},
+	},
+	{
+		id: 'artesano',
+		name: 'Artesano',
+		imageSrc: '/products/fruco_artesano.avif',
+		description:
+			'Elaborado con técnicas tradicionales para un sabor único y auténtico',
+		detailedDescription:
+			'Preparado siguiendo recetas tradicionales transmitidas de generación en generación. Cada lote es cuidadosamente elaborado para mantener la autenticidad del sabor casero.',
+		ingredients: [
+			'Tomate natural',
+			'Aceite de oliva virgen extra',
+			'Cebolla',
+			'Pimiento',
+			'Especias naturales',
+		],
+		nutritionalInfo: {
+			calories: '52 kcal',
+			protein: '1.5g',
+			carbs: '9.2g',
+			fat: '1.3g',
 		},
 	},
 	{
