@@ -10,9 +10,9 @@ export default function Footer() {
 							Tel: 660 85 80 90
 						</a>{' '}
 						|
-						<a href="mailto:info@apis.es" className="hover:text-white">
+						<a href="mailto:info@fruco.es" className="hover:text-white">
 							{' '}
-							Email: info@apis.es
+							Email: info@fruco.es
 						</a>
 					</p>
 				</div>
