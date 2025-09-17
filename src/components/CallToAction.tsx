@@ -16,8 +16,8 @@ const CallToAction = ({
 	title = '¿Listo para descubrir el auténtico sabor?',
 	subtitle = 'Únete a la familia Fruco y experimenta la tradición en cada bocado. Contáctanos para conocer más sobre nuestros productos y dónde encontrarlos.',
 	contactInfo = {
-		email: 'info@apis.es',
-		phone: '924 37 86 31',
+		email: 'info@fruco.es',
+		phone: '660 85 80 90',
 		address: 'Mérida, España',
 	},
 }: CallToActionProps) => {

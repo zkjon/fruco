@@ -5,14 +5,14 @@ export default function Footer() {
 				<div className="mb-4 text-gray-400 text-sm space-y-1">
 					<p>
 						España |
-						<a href="tel:924378631" className="hover:text-white">
+						<a href="tel:660858090" className="hover:text-white">
 							{' '}
-							Tel: 924 37 86 31
+							Tel: 660 85 80 90
 						</a>{' '}
 						|
-						<a href="mailto:info@apis.es" className="hover:text-white">
+						<a href="mailto:info@fruco.es" className="hover:text-white">
 							{' '}
-							Email: info@apis.es
+							Email: info@fruco.es
 						</a>
 					</p>
 				</div>
