@@ -180,32 +180,35 @@ function VisionMision() {
 
       <div
         ref={visionElementsRef}
-        className="flex justify-between align-middle flex-col md:flex-row mt-15 gap-15 w-[50%] mx-auto"
+        className="flex justify-center items-center flex-col md:flex-row mt-20 gap-16 md:gap-4 lg:gap-6 w-full mx-auto px-6"
       >
         {VISION_ELEMENTS.map((element) => {
           const { imgRef, isLoaded } = useLazyImage({
-            rootMargin: "100px",
+            rootMargin: "20px",
             threshold: 0.1,
           });
 
           return (
-            <div key={element.id} className="w-30 relative vision-element">
-              <img
-                ref={imgRef}
-                data-src={element.image}
-                alt={element.alt}
-                className={`rounded-full scale-130 grayscale-50 transition-opacity duration-500 ${
-                  isLoaded ? "opacity-100" : "opacity-0"
-                }`}
-                style={{
-                  backgroundColor: isLoaded ? "transparent" : "#1a1a1a",
-                }}
-                width={300}
-                height={300}
-              />
-              <p className="uppercase absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white px-4 py-1 rounded-4xl text-4xl font-bold z-10">
-                {element.title}
-              </p>
+            <div
+              key={element.id}
+              className="w-full md:w-1/3 relative vision-element flex justify-center items-center"
+            >
+              <div className="relative w-48 h-48 md:w-40 md:h-40 lg:w-52 lg:h-52 flex-shrink-0">
+                <img
+                  ref={imgRef}
+                  data-src={element.image}
+                  alt={element.alt}
+                  className={`rounded-full grayscale-50 transition-opacity duration-500 w-full h-full object-cover ${
+                    isLoaded ? "opacity-100" : "opacity-0"
+                  }`}
+                  style={{
+                    backgroundColor: isLoaded ? "transparent" : "#1a1a1a",
+                  }}
+                />
+                <p className="uppercase absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white px-2 py-1 text-3xl md:text-2xl lg:text-4xl xl:text-5xl font-bold z-10 whitespace-nowrap pointer-events-none text-center">
+                  {element.title}
+                </p>
+              </div>
             </div>
           );
         })}
