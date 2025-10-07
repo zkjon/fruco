@@ -6,6 +6,7 @@ const languages: { code: Language; name: string; flagSrc: string }[] = [
   { code: "es", name: "Español", flagSrc: "/flags/es.svg" },
   { code: "en", name: "English", flagSrc: "/flags/us.svg" },
   { code: "fr", name: "Français", flagSrc: "/flags/fr.svg" },
+  { code: "pt", name: "Português", flagSrc: "/flags/pt.svg" },
 ];
 
 export default function LanguageSelector() {

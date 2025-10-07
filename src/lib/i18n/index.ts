@@ -1,12 +1,14 @@
-import { en } from "./en";
 import { es } from "./es";
+import { en } from "./en";
 import { fr } from "./fr";
+import { pt } from "./pt";
 import type { Language, Translations } from "./types";
 
 export const translations: Record<Language, Translations> = {
   es,
   en,
   fr,
+  pt,
 };
 
 export const defaultLanguage: Language = "es";
