@@ -25,7 +25,7 @@ export const es: Translations = {
     infoCard: {
       title: "¿Sabías que...?",
       subtitle:
-        "La salsa de tomate puede cuidar tu corazón, el tomate cocinado contiene licopeno, un antioxidante natural asociado a la salud cardiovascular",
+        "El tomate cocinado multiplica sus beneficios, el calor libera el licopeno, un potente antioxidante que favorece a tu cuerpo",
       quality: "Calidad garantizada",
     },
     nutritionalInfo: {

@@ -25,7 +25,7 @@ export const pt: Translations = {
     infoCard: {
       title: "Você sabia que...?",
       subtitle:
-        "O molho de tomate pode cuidar do seu coração, o tomate cozido contém licopeno, um antioxidante natural associado à saúde cardiovascular",
+        "O tomate cozido multiplica seus benefícios, o calor libera o licopeno, um poderoso antioxidante que favorece seu corpo",
       quality: "Qualidade garantida",
     },
     nutritionalInfo: {

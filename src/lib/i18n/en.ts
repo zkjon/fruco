@@ -24,7 +24,7 @@ export const en: Translations = {
     infoCard: {
       title: "Did you know...?",
       subtitle:
-        "Tomato sauce can take care of your heart, cooked tomato contains lycopene, a natural antioxidant associated with cardiovascular health",
+        "Cooked tomato multiplies its benefits, heat releases lycopene, a powerful antioxidant that benefits your body",
       quality: "Quality guaranteed",
     },
     nutritionalInfo: {
