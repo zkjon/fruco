@@ -11,7 +11,6 @@ const HeroSection = ({ logoSrc = "/logo_fruco.avif" }: HeroSectionProps) => {
   const logoRef = useRef<HTMLImageElement>(null);
   const subtitleRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLElement>(null);
-  const scrollIndicatorRef = useRef<HTMLDivElement>(null);
   const [subtitleChars, setSubtitleChars] = useState<string[]>([]);
   const t = useTranslations();
   const subtitle = t.hero.subtitle;
@@ -66,84 +65,40 @@ const HeroSection = ({ logoSrc = "/logo_fruco.avif" }: HeroSectionProps) => {
     return () => clearTimeout(timer);
   }, [subtitleChars]);
 
-  // Animación del scroll indicator
-  useEffect(() => {
-    if (scrollIndicatorRef.current) {
-      gsap.fromTo(
-        scrollIndicatorRef.current,
-        {
-          y: -6,
-          opacity: 0,
-        },
-        {
-          y: 24,
-          opacity: 1,
-          duration: 1.5,
-          ease: "power2.inOut",
-          repeat: -1,
-          yoyo: true,
-          repeatDelay: 0,
-        },
-      );
-    }
-  }, []);
-
-  // Efecto de parallax sutil en el contenedor
-  useEffect(() => {
-    if (containerRef.current) {
-      const handleMouseMove = (e: MouseEvent) => {
-        const { clientX, clientY } = e;
-        const { innerWidth, innerHeight } = window;
-
-        const xPos = (clientX / innerWidth - 0.5) * 20;
-        const yPos = (clientY / innerHeight - 0.5) * 20;
-
-        if (logoRef.current) {
-          logoRef.current.style.transform = `translate(${xPos * 0.5}px, ${yPos * 0.5}px)`;
-        }
-      };
-
-      window.addEventListener("mousemove", handleMouseMove);
-
-      return () => {
-        window.removeEventListener("mousemove", handleMouseMove);
-      };
-    }
-  }, []);
 
   return (
     <section
       ref={containerRef}
-      className="section-container relative overflow-hidden"
+      className="relative overflow-hidden flex items-center justify-center py-30"
       id="inicio"
     >
       {/* Contenido principal */}
-      <div className="text-center z-10 relative">
+      <div className="text-center z-10 relative max-w-4xl mx-auto px-4">
         {/* Logo */}
-        <div className="mb-12">
+        <div className="mb-8">
           <img
             ref={logoRef}
             src={logoSrc}
             alt="Fruco Logo"
-            className="mx-auto max-w-xs md:max-w-sm lg:max-w-md transition-transform duration-300 ease-out"
+            className="mx-auto w-60 md:w-[320px] lg:w-[380px] transition-transform duration-300 ease-out"
             style={{
               willChange: "transform, opacity",
               opacity: 0,
               transform: "translateY(20px) translateZ(0)",
             }}
-            width={600}
+            width={400}
             height={334}
             fetchPriority="high"
             loading="eager"
             decoding="sync"
-            sizes="(max-width: 768px) 320px, (max-width: 1024px) 384px, 448px"
+            sizes="(max-width: 768px) 240px, (max-width: 1024px) 320px, 380px"
           />
         </div>
 
         {/* Subtítulo */}
         <h1
           ref={subtitleRef}
-          className="text-2xl md:text-4xl lg:text-5xl text-gray-300 max-w-3xl mx-auto leading-relaxed font-light"
+          className="text-2xl md:text-3xl lg:text-4xl text-gray-300 leading-relaxed font-light"
           style={{
             fontFamily: "'Caveat', cursive",
             willChange: "transform, opacity",
@@ -163,19 +118,6 @@ const HeroSection = ({ logoSrc = "/logo_fruco.avif" }: HeroSectionProps) => {
             </span>
           ))}
         </h1>
-      </div>
-
-      {/* Indicador de scroll */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center space-y-2 z-20">
-        <span className="text-white/60 text-xs font-light tracking-widest uppercase">
-          {t.hero.scrollIndicator}
-        </span>
-        <div className="w-[4px] h-8 bg-gradient-to-b from-white/60 to-transparent relative overflow-hidden">
-          <div
-            ref={scrollIndicatorRef}
-            className="absolute top-0 left-0 w-full h-2 bg-white"
-          />
-        </div>
       </div>
     </section>
   );
