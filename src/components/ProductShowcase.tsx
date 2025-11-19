@@ -350,7 +350,7 @@ const ProductCard = memo(
         <div className="absolute inset-0 rounded-3xl bg-linear-to-br from-fruco-red/10 via-transparent to-fruco-red/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
         {/* Imagen del producto */}
-        <div className="relative overflow-hidden aspect-square bg-linear-to-br from-gray-50 to-gray-100 flex-shrink-0">
+        <div className="relative overflow-hidden aspect-square bg-linear-to-br from-gray-50 to-gray-100 shrink-0">
           {/* Overlay decorativo */}
           <div className="absolute inset-0 bg-gradient-to-t from-white/20 via-transparent to-transparent z-10" />
 
