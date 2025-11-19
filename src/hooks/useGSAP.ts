@@ -57,6 +57,7 @@ export const useFadeIn = (
     ease?: string;
     opacity?: number;
     y?: number;
+    immediate?: boolean;
     scrollTrigger?: {
       trigger?: string | Element;
       start?: string;
@@ -68,6 +69,29 @@ export const useFadeIn = (
 ) => {
   useEffect(() => {
     if (elementRef.current) {
+      // Si immediate es true, animar sin ScrollTrigger
+      if (options?.immediate) {
+        const animation = gsap.fromTo(
+          elementRef.current,
+          {
+            opacity: 0,
+            y: options.y || 30,
+          },
+          {
+            opacity: options.opacity || 1,
+            y: 0,
+            duration: options.duration || 1,
+            ease: options.ease || "power2.out",
+            delay: options.delay || 0,
+          },
+        );
+        return () => {
+          if (animation?.kill) {
+            animation.kill();
+          }
+        };
+      }
+
       const animation = fadeInOnScroll(
         elementRef.current,
         options as ScrollTrigger.Vars,
@@ -134,15 +158,15 @@ export const useHeroEntrance = (
 // Hook para animación de grid de productos
 export const useProductGrid = (containerRef: {
   current: HTMLElement | null;
-}) => {
+}, immediate: boolean = false) => {
   const { addAnimation } = useGSAP();
 
   useEffect(() => {
     if (containerRef.current) {
-      const animation = productGridAnimation(containerRef.current);
+      const animation = productGridAnimation(containerRef.current, immediate);
       addAnimation(animation);
     }
-  }, [containerRef, addAnimation]);
+  }, [containerRef, addAnimation, immediate]);
 };
 
 // Hook eliminado: useProductHover - ahora se usa CSS para mejor rendimiento

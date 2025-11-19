@@ -32,9 +32,9 @@ const HeroSection = ({ logoSrc = "/logo_fruco.avif" }: HeroSectionProps) => {
           {
             opacity: 1,
             transform: "translate3d(0, 0, 0)",
-            duration: 0.8,
+            duration: 0.5,
             ease: "power2.out",
-            delay: 0.1,
+            delay: 0.05,
           },
         );
 
@@ -53,14 +53,18 @@ const HeroSection = ({ logoSrc = "/logo_fruco.avif" }: HeroSectionProps) => {
             scale: 1,
             rotateZ: 0,
             y: 0,
-            duration: 0.15,
+            duration: 0.12,
             ease: "back.out(2)",
-            stagger: 0.03, // Efecto de escritura letra por letra
-            delay: 0.9,
+            stagger: 0.02, // Efecto de escritura letra por letra más rápido
+            delay: 0.6,
+            onComplete: () => {
+              // Disparar evento personalizado cuando termine la animación del hero
+              window.dispatchEvent(new CustomEvent('heroAnimationComplete'));
+            }
           },
         );
       }
-    }, 100); // Pequeño delay para permitir el renderizado del logo
+    }, 50); // Delay reducido para renderizado del logo
 
     return () => clearTimeout(timer);
   }, [subtitleChars]);
