@@ -174,6 +174,12 @@ export const pt: Translations = {
       phone: "660 85 80 90",
       address: "Mérida, Espanha",
     },
+    locations: {
+      title: "Encontre-nos",
+      clickToView: "Clique para ver no Google Maps",
+      merida: "Mérida",
+      montijo: "Montijo",
+    },
   },
   footer: {
     rights: "Todos os direitos reservados.",

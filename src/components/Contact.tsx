@@ -233,7 +233,7 @@ const Contact = ({ title, subtitle, contactInfo }: ContactProps) => {
             className="text-2xl md:text-3xl font-bold text-white mb-8"
             style={{ willChange: "transform, opacity" }}
           >
-            {t.products.findUs}
+            {t.contact.locations.title}
           </h3>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-3xl mx-auto">
             {/* Primera ubicación - Mérida */}
@@ -253,7 +253,7 @@ const Contact = ({ title, subtitle, contactInfo }: ContactProps) => {
                   viewBox="0 0 24 24"
                   aria-label="Icono de ubicación"
                 >
-                  <title>Ubicación</title>
+                  <title>{t.contact.locations.merida}</title>
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -269,10 +269,10 @@ const Contact = ({ title, subtitle, contactInfo }: ContactProps) => {
                 </svg>
               </div>
               <h4 className="text-2xl md:text-3xl font-semibold text-white mb-2 group-hover:text-fruco-gold transition-colors duration-300">
-                Mérida
+                {t.contact.locations.merida}
               </h4>
               <p className="text-gray-400 text-sm group-hover:text-gray-300 transition-colors duration-300">
-                Click para ver en Google Maps
+                {t.contact.locations.clickToView}
               </p>
             </a>
 
@@ -293,7 +293,7 @@ const Contact = ({ title, subtitle, contactInfo }: ContactProps) => {
                   viewBox="0 0 24 24"
                   aria-label="Icono de ubicación"
                 >
-                  <title>Ubicación</title>
+                  <title>{t.contact.locations.montijo}</title>
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -309,10 +309,10 @@ const Contact = ({ title, subtitle, contactInfo }: ContactProps) => {
                 </svg>
               </div>
               <h4 className="text-2xl md:text-3xl font-semibold text-white mb-2 group-hover:text-fruco-gold transition-colors duration-300">
-                Montijo
+                {t.contact.locations.montijo}
               </h4>
               <p className="text-gray-400 text-sm group-hover:text-gray-300 transition-colors duration-300">
-                Click para ver en Google Maps
+                {t.contact.locations.clickToView}
               </p>
             </a>
           </div>

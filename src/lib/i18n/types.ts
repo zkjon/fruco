@@ -84,6 +84,12 @@ export interface Translations {
       phone: string;
       address: string;
     };
+    locations: {
+      title: string;
+      clickToView: string;
+      merida: string;
+      montijo: string;
+    };
   };
   footer: {
     rights: string;
