@@ -4,14 +4,17 @@ import { useTranslations } from "@/hooks/useI18n";
 
 interface HeroSectionProps {
   logoSrc?: string;
+  topSrc?: string;
   title?: string;
 }
 
-const HeroSection = ({ logoSrc = "/logo_fruco.avif" }: HeroSectionProps) => {
+const HeroSection = ({ logoSrc = "/logo_fruco.svg", topSrc = "/top_icon.avif" }: HeroSectionProps) => {
   const logoRef = useRef<HTMLImageElement>(null);
   const subtitleRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLElement>(null);
+  const stickyLogoRef = useRef<HTMLDivElement>(null);
   const [subtitleChars, setSubtitleChars] = useState<string[]>([]);
+  const [showStickyLogo, setShowStickyLogo] = useState(false);
   const t = useTranslations();
   const subtitle = t.hero.subtitle;
 
@@ -69,9 +72,63 @@ const HeroSection = ({ logoSrc = "/logo_fruco.avif" }: HeroSectionProps) => {
     return () => clearTimeout(timer);
   }, [subtitleChars]);
 
+  // Detectar cuando el logo principal sale del viewport
+  useEffect(() => {
+    const handleScroll = () => {
+      if (logoRef.current) {
+        const rect = logoRef.current.getBoundingClientRect();
+        // El logo sticky aparece solo cuando el logo principal está completamente fuera de la vista (arriba)
+        // y desaparece cuando el logo principal vuelve a ser visible
+        setShowStickyLogo(rect.bottom < 0);
+      }
+    };
+
+    // Ejecutar una vez al inicio para establecer el estado inicial
+    handleScroll();
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Animar el logo sticky cuando aparece y desaparece
+  useEffect(() => {
+    if (stickyLogoRef.current) {
+      if (showStickyLogo) {
+        gsap.to(
+          stickyLogoRef.current,
+          { opacity: 1, x: 0, duration: 0.4, ease: "power2.out" }
+        );
+      } else {
+        gsap.to(
+          stickyLogoRef.current,
+          { opacity: 0, x: -20, duration: 0.3, ease: "power2.in" }
+        );
+      }
+    }
+  }, [showStickyLogo]);
+
 
   return (
-    <section
+    <>
+      {/* Logo sticky en la esquina superior izquierda */}
+      <div
+        ref={stickyLogoRef}
+        className={`fixed top-4 left-4 z-50 transition-opacity duration-300 ${
+          showStickyLogo ? 'pointer-events-auto' : 'opacity-0 pointer-events-none'
+        }`}
+      >
+        <a href="#inicio" className="block">
+          <img
+            src={topSrc}
+            alt="Fruco"
+            className="w-25 md:w-24 lg:w-28 hover:scale-110 transition-transform duration-300"
+            width={400}
+            height={334}
+          />
+        </a>
+      </div>
+
+      <section
       ref={containerRef}
       className="relative overflow-hidden flex items-center justify-center pt-30 pb-10"
       id="inicio"
@@ -79,12 +136,12 @@ const HeroSection = ({ logoSrc = "/logo_fruco.avif" }: HeroSectionProps) => {
       {/* Contenido principal */}
       <div className="text-center z-10 relative max-w-4xl mx-auto px-4">
         {/* Logo */}
-        <div className="mb-8">
+        <div className="mb-6">
           <img
             ref={logoRef}
             src={logoSrc}
             alt="Fruco Logo"
-            className="mx-auto w-60 md:w-[320px] lg:w-[380px] transition-transform duration-300 ease-out"
+            className="mx-auto w-48 md:w-64 lg:w-72 transition-transform duration-300 ease-out"
             style={{
               willChange: "transform, opacity",
               opacity: 0,
@@ -95,7 +152,7 @@ const HeroSection = ({ logoSrc = "/logo_fruco.avif" }: HeroSectionProps) => {
             fetchPriority="high"
             loading="eager"
             decoding="sync"
-            sizes="(max-width: 768px) 240px, (max-width: 1024px) 320px, 380px"
+            sizes="(max-width: 768px) 192px, (max-width: 1024px) 256px, 288px"
           />
         </div>
 
@@ -124,6 +181,7 @@ const HeroSection = ({ logoSrc = "/logo_fruco.avif" }: HeroSectionProps) => {
         </h1>
       </div>
     </section>
+    </>
   );
 };
 
