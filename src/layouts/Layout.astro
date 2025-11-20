@@ -1,5 +1,10 @@
 ---
 import CookieBanner from "@/components/CookieBanner.astro";
+import {
+  brandSchema,
+  enhancedOrganizationSchema,
+  websiteSchema,
+} from "@/lib/brand-schema";
 
 interface Props {
   title: string;
@@ -15,8 +20,8 @@ interface Props {
 const {
   title,
   lang = "es",
-  description = "Descubre Fruco, la auténtica salsa de tomate española con más de 60 años de tradición. Ingredientes naturales, sabor casero y calidad premium desde 1959.",
-  keywords = "fruco, salsa tomate, salsa, tomate, tradicional, salsa española, tomate natural, tradición 1959, salsa casera, ingredientes naturales, tomate premium, salsa artesanal, cocina española, conservas, productos naturales, recetas con tomate, salsa mediterránea, made in spain",
+  description = "Fruco® - La marca española de salsa de tomate más auténtica desde 1959. Tomate 100% español, receta tradicional y sabor casero. Fruco es calidad, Fruco es tradición. Sitio web oficial de Fruco España.",
+  keywords = "fruco, fruco españa, fruco salsa, fruco tomate, fruco oficial, salsa fruco, tomate fruco, fruco 1959, marca fruco, fruco original, comprar fruco, fruco tradicional, fruco calidad, fruco conservas, fruco mérida, fruco badajoz, salsa tomate española, tomate frito fruco, fruco artesano, fruco brick, productos fruco",
   ogImage = "/logo_fruco.svg",
   ogType = "website",
   canonical,
@@ -51,6 +56,13 @@ const alternateLanguages = {
 		<meta name="author" content="CARNES Y VEGETALES S.L." />
 		<meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"} />
 		<meta name="googlebot" content="index, follow" />
+		
+		<!-- Brand and Identity -->
+		<meta property="og:brand" content="Fruco" />
+		<meta name="application-name" content="Fruco" />
+		<meta name="apple-mobile-web-app-title" content="Fruco" />
+		<meta name="copyright" content="© 2025 Fruco - CARNES Y VEGETALES S.L." />
+		<meta name="publisher" content="Fruco - CARNES Y VEGETALES S.L." />
 		
 		<!-- Canonical URL -->
 		<link rel="canonical" href={currentUrl} />
@@ -114,8 +126,8 @@ const alternateLanguages = {
 		<meta property="og:image" content={fullImageUrl} />
 		<meta property="og:image:width" content="1200" />
 		<meta property="og:image:height" content="630" />
-		<meta property="og:image:alt" content="Fruco - Salsa de Tomate Tradicional" />
-		<meta property="og:site_name" content="Fruco" />
+		<meta property="og:image:alt" content="Fruco® - Salsa de Tomate Española Original desde 1959" />
+		<meta property="og:site_name" content="Fruco® - Salsa de Tomate Española" />
 		<meta property="og:locale" content={`${lang}_ES`} />
 		{Object.keys(alternateLanguages).filter(l => l !== lang).map((langCode) => (
 			<meta property="og:locale:alternate" content={`${langCode}_ES`} />
@@ -127,107 +139,40 @@ const alternateLanguages = {
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={description} />
 		<meta name="twitter:image" content={fullImageUrl} />
-		<meta name="twitter:image:alt" content="Fruco - Salsa de Tomate Tradicional" />
+		<meta name="twitter:image:alt" content="Fruco® - Salsa de Tomate Española Original desde 1959" />
 		<meta name="twitter:creator" content="@fruco_oficial" />
 		<meta name="twitter:site" content="@fruco_oficial" />
+		<meta name="twitter:domain" content="fruco.es" />
 
-		<!-- Structured Data - JSON-LD -->
+		<!-- Structured Data - JSON-LD with Enhanced Brand Schema -->
+		<script type="application/ld+json" is:inline set:html={JSON.stringify(brandSchema)} />
+		<script type="application/ld+json" is:inline set:html={JSON.stringify(enhancedOrganizationSchema)} />
+		<script type="application/ld+json" is:inline set:html={JSON.stringify(websiteSchema)} />
 		<script type="application/ld+json" is:inline set:html={JSON.stringify({
 			"@context": "https://schema.org",
-			"@graph": [
-				{
-					"@type": "Organization",
-					"@id": "https://fruco.es/#organization",
-					"name": "Fruco - CARNES Y VEGETALES S.L.",
-					"url": "https://fruco.es/",
-					"logo": {
-						"@type": "ImageObject",
-						"url": "https://fruco.es/logo_fruco.svg",
-						"width": 400,
-						"height": 334
-					},
-					"image": "https://fruco.es/logo_fruco.svg",
-					"description": description,
-					"address": {
-						"@type": "PostalAddress",
-						"streetAddress": "C/ Sevilla, parcelas 1 y 2, Polígono Industrial El Prado",
-						"addressLocality": "Mérida",
-						"addressRegion": "Badajoz",
-						"postalCode": "06800",
-						"addressCountry": "ES"
-					},
-					"contactPoint": {
-						"@type": "ContactPoint",
-						"telephone": "+34-924-330-170",
-						"contactType": "customer service",
-						"email": "info@fruco.es",
-						"areaServed": "ES",
-						"availableLanguage": ["Spanish", "English", "French", "Portuguese"]
-					},
-					"sameAs": [
-						"https://www.facebook.com/profile.php?id=61583976511602",
-						"https://www.instagram.com/fruco_oficial/"
-					],
-					"foundingDate": "1959",
-					"founder": {
-						"@type": "Person",
-						"name": "Fundadores Fruco"
+			"@type": "WebPage",
+			"@id": currentUrl + "#webpage",
+			"url": currentUrl,
+			"name": title,
+			"description": description,
+			"isPartOf": {
+				"@id": "https://fruco.es/#website"
+			},
+			"about": {
+				"@id": "https://fruco.es/#organization"
+			},
+			"inLanguage": lang,
+			"breadcrumb": {
+				"@type": "BreadcrumbList",
+				"itemListElement": [
+					{
+						"@type": "ListItem",
+						"position": 1,
+						"name": "Inicio",
+						"item": "https://fruco.es/"
 					}
-				},
-				{
-					"@type": "LocalBusiness",
-					"@id": "https://fruco.es/#localbusiness",
-					"name": "Fruco",
-					"image": "https://fruco.es/logo_fruco.svg",
-					"priceRange": "$$",
-					"address": {
-						"@type": "PostalAddress",
-						"streetAddress": "C/ Sevilla, parcelas 1 y 2, Polígono Industrial El Prado",
-						"addressLocality": "Mérida",
-						"addressRegion": "Badajoz",
-						"postalCode": "06800",
-						"addressCountry": "ES"
-					},
-					"geo": {
-						"@type": "GeoCoordinates",
-						"latitude": 38.9157,
-						"longitude": -6.3369
-					},
-					"telephone": "+34-924-330-170",
-					"email": "info@fruco.es",
-					"openingHoursSpecification": {
-						"@type": "OpeningHoursSpecification",
-						"dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-						"opens": "09:00",
-						"closes": "18:00"
-					}
-				},
-				{
-					"@type": "WebSite",
-					"@id": "https://fruco.es/#website",
-					"url": "https://fruco.es/",
-					"name": "Fruco",
-					"description": description,
-					"publisher": {
-						"@id": "https://fruco.es/#organization"
-					},
-					"inLanguage": [lang, "es", "en", "fr", "pt"]
-				},
-				{
-					"@type": "WebPage",
-					"@id": currentUrl + "#webpage",
-					"url": currentUrl,
-					"name": title,
-					"description": description,
-					"isPartOf": {
-						"@id": "https://fruco.es/#website"
-					},
-					"about": {
-						"@id": "https://fruco.es/#organization"
-					},
-					"inLanguage": lang
-				}
-			]
+				]
+			}
 		})} />
 
 
