@@ -192,6 +192,13 @@ export const en: Translations = {
     location: "Spain",
     phone: "Tel: 660 85 80 90",
     email: "Email: info@fruco.es",
+    tagline:
+      "Traditional tomato sauce since 1959. Natural ingredients and homemade flavor in every recipe.",
+    contact: "Contact",
+    legalTitle: "Legal",
+    compliance: "Compliance",
+    made: "Made with",
+    in: "in",
     legal: {
       legalNotice: "Legal Notice",
       cookiePolicy: "Cookie Policy",

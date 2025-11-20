@@ -192,6 +192,13 @@ export const pt: Translations = {
     location: "Espanha",
     phone: "Tel: 660 85 80 90",
     email: "Email: info@fruco.es",
+    tagline:
+      "Molho de tomate tradicional desde 1959. Ingredientes naturais e sabor caseiro em cada receita.",
+    contact: "Contacto",
+    legalTitle: "Legal",
+    compliance: "Conformidade",
+    made: "Feito com",
+    in: "em",
     legal: {
       legalNotice: "Aviso Legal",
       cookiePolicy: "Política de Cookies",

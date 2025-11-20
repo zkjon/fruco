@@ -101,6 +101,12 @@ export interface Translations {
     location: string;
     phone: string;
     email: string;
+    tagline: string;
+    contact: string;
+    legalTitle: string;
+    compliance: string;
+    made: string;
+    in: string;
     legal: {
       legalNotice: string;
       cookiePolicy: string;

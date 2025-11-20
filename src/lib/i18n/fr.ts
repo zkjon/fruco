@@ -193,6 +193,13 @@ export const fr: Translations = {
     location: "Espagne",
     phone: "Tél : 660 85 80 90",
     email: "Email : info@fruco.es",
+    tagline:
+      "Sauce tomate traditionnelle depuis 1959. Ingrédients naturels et saveur maison dans chaque recette.",
+    contact: "Contact",
+    legalTitle: "Légal",
+    compliance: "Conformité",
+    made: "Fabriqué avec",
+    in: "en",
     legal: {
       legalNotice: "Mentions légales",
       cookiePolicy: "Politique de cookies",

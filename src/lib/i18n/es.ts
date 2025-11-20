@@ -193,6 +193,13 @@ export const es: Translations = {
     location: "España",
     phone: "Tel: 660 85 80 90",
     email: "Email: info@fruco.es",
+    tagline:
+      "Salsa de tomate tradicional desde 1959. Ingredientes naturales y sabor casero en cada receta.",
+    contact: "Contacto",
+    legalTitle: "Legal",
+    compliance: "Cumplimiento",
+    made: "Hecho con",
+    in: "en",
     legal: {
       legalNotice: "Aviso legal",
       cookiePolicy: "Política de cookies",
