@@ -105,6 +105,11 @@ const HeroSection = ({
     }
   }, [showStickyLogo]);
 
+  const handleLogoClick = (e: Event) => {
+    e.preventDefault();
+    window.location.href = window.location.pathname;
+  };
+
   return (
     <>
       <div
@@ -115,7 +120,7 @@ const HeroSection = ({
             : "opacity-0 pointer-events-none"
         }`}
       >
-        <a href="#inicio" className="block">
+        <a onClick={handleLogoClick} className="block">
           <img
             src={topSrc}
             alt="Fruco"
