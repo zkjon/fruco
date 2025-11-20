@@ -8,15 +8,15 @@
 ### 1. **Optimización de Keywords con Alta Densidad de Marca**
 
 #### Homepage (index.astro)
-- **Título**: `Fruco® - Salsa de Tomate Original Española desde 1959 | Oficial`
+- **Título**: `Fruco - Salsa de Tomate Original Española desde 1959 | Oficial`
   - Incluye la marca "Fruco" al principio (máxima relevancia)
-  - Añade símbolo ® para reforzar identidad de marca registrada
+  - Añade símbolo  para reforzar identidad de marca registrada
   - Incluye año de fundación para autoridad histórica
   - Etiqueta "Oficial" para distinguirse de otros sitios
 
 - **Meta Description**:
   ```
-  Fruco® - La marca española de salsa de tomate más auténtica desde 1959. 
+  Fruco - La marca española de salsa de tomate más auténtica desde 1959. 
   Tomate 100% español, receta tradicional, sabor casero. Fruco es calidad, 
   Fruco es tradición. Fruco Official Website.
   ```
@@ -120,8 +120,8 @@ Creado nuevo archivo: `src/lib/brand-schema.ts` con 3 schemas especializados:
 ### 4. **Open Graph Mejorado**
 
 ```html
-<meta property="og:site_name" content="Fruco® - Salsa de Tomate Española" />
-<meta property="og:image:alt" content="Fruco® - Salsa de Tomate Española Original desde 1959" />
+<meta property="og:site_name" content="Fruco - Salsa de Tomate Española" />
+<meta property="og:image:alt" content="Fruco - Salsa de Tomate Española Original desde 1959" />
 <meta name="twitter:domain" content="fruco.es" />
 ```
 
