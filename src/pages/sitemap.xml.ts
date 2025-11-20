@@ -23,6 +23,12 @@ export const GET: APIRoute = () => {
       changefreq: "weekly",
       priority: 1.0,
     },
+    {
+      loc: `${SITE_URL}/verification`,
+      lastmod: new Date().toISOString().split("T")[0],
+      changefreq: "yearly",
+      priority: 0.3,
+    },
   ];
 
   // Add legal pages for all languages
