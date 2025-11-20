@@ -118,13 +118,11 @@ const { language = "es" } = Astro.props;
       script.onload = () => {
         // @ts-expect-error - dataLayer is added by gtag.js
         window.dataLayer = window.dataLayer || [];
-        function gtag() {
+        function gtag(...args: unknown[]) {
           // @ts-expect-error - dataLayer is added by gtag.js
-          window.dataLayer.push(arguments);
+          window.dataLayer.push(args);
         }
-        // @ts-expect-error - gtag function is defined above
         gtag("js", new Date());
-        // @ts-expect-error - gtag function is defined above
         gtag("config", "G-Z7SJT3Z527");
       };
     }

@@ -82,17 +82,17 @@ const description =
 			(function() {
 				const consent = localStorage.getItem('cookie-consent');
 				if (consent === 'accepted') {
-					// Load gtag.js script
 					const script = document.createElement('script');
 					script.async = true;
 					script.src = 'https://www.googletagmanager.com/gtag/js?id=G-Z7SJT3Z527';
 					document.head.appendChild(script);
 					
-					// Initialize dataLayer and gtag
 					window.dataLayer = window.dataLayer || [];
-					function gtag(){window.dataLayer.push(arguments);}
-					gtag('js', new Date());
-					gtag('config', 'G-Z7SJT3Z527');
+					function gtag(...args) {
+						window.dataLayer.push(args);
+					}
+					gtag("js", new Date());
+					gtag("config", "G-Z7SJT3Z527");
 				}
 			})();
 		</script>

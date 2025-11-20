@@ -25,12 +25,6 @@ export default tseslint.config(
   eslintPluginPrettierRecommended,
   eslintPluginAstro.configs.recommended,
   {
-    files: ["**/*.astro"],
-    rules: {
-      "prettier/prettier": "off", // Desactivar prettier en archivos Astro para evitar conflictos
-    },
-  },
-  {
     files: ["**/*.{mjs,cjs,js,ts,astro}"],
     languageOptions: { ecmaVersion: "latest", globals: globals.browser },
     plugins: {
@@ -66,6 +60,14 @@ export default tseslint.config(
           ],
         },
       ],
+    },
+  },
+  {
+    files: ["**/*.astro"],
+    rules: {
+      "prettier/prettier": "off",
+      "prefer-rest-params": "off",
+      "@typescript-eslint/prefer-rest-params": "off",
     },
   },
 );
