@@ -19,12 +19,6 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div className="lg:col-span-1">
-            <img
-              src="/top_icon.avif"
-              alt="Fruco"
-              className="h-16 w-auto mb-4"
-              loading="lazy"
-            />
             <p className="text-sm text-gray-400 leading-relaxed mb-4">
               {t.footer.tagline}
             </p>
