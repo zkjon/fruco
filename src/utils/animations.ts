@@ -168,13 +168,38 @@ export const heroEntrance = (elements: {
 };
 
 // Función para animación de productos en grid
-export const productGridAnimation = (container: string | Element) => {
+export const productGridAnimation = (container: string | Element, immediate: boolean = false) => {
   let products: Element[];
 
   if (typeof container === "string") {
     products = gsap.utils.toArray(`${container} .product-item`);
   } else {
     products = gsap.utils.toArray(container.querySelectorAll(".product-item"));
+  }
+
+  const animationConfig = {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    duration: 0.6,
+    ease: "power2.out",
+    stagger: 0.15, // Aumentado de 0.1 a 0.15 para efecto más sutil
+  };
+
+  if (immediate) {
+    // Animación inmediata sin ScrollTrigger
+    return gsap.fromTo(
+      products,
+      {
+        opacity: 0,
+        y: 50,
+        scale: 0.9,
+      },
+      {
+        ...animationConfig,
+        delay: 0.5, // Aumentado de 0.3 a 0.5 para dar más tiempo
+      },
+    );
   }
 
   return gsap.fromTo(
@@ -185,12 +210,7 @@ export const productGridAnimation = (container: string | Element) => {
       scale: 0.9,
     },
     {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      duration: 0.6,
-      ease: "power2.out",
-      stagger: 0.1,
+      ...animationConfig,
       scrollTrigger: {
         trigger: container,
         start: "top 70%",

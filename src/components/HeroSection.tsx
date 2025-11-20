@@ -4,15 +4,20 @@ import { useTranslations } from "@/hooks/useI18n";
 
 interface HeroSectionProps {
   logoSrc?: string;
+  topSrc?: string;
   title?: string;
 }
 
-const HeroSection = ({ logoSrc = "/logo_fruco.avif" }: HeroSectionProps) => {
+const HeroSection = ({
+  logoSrc = "/logo_fruco.svg",
+  topSrc = "/top_icon.avif",
+}: HeroSectionProps) => {
   const logoRef = useRef<HTMLImageElement>(null);
   const subtitleRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLElement>(null);
-  const scrollIndicatorRef = useRef<HTMLDivElement>(null);
+  const stickyLogoRef = useRef<HTMLDivElement>(null);
   const [subtitleChars, setSubtitleChars] = useState<string[]>([]);
+  const [showStickyLogo, setShowStickyLogo] = useState(false);
   const t = useTranslations();
   const subtitle = t.hero.subtitle;
 
@@ -33,9 +38,9 @@ const HeroSection = ({ logoSrc = "/logo_fruco.avif" }: HeroSectionProps) => {
           {
             opacity: 1,
             transform: "translate3d(0, 0, 0)",
-            duration: 0.8,
+            duration: 0.5,
             ease: "power2.out",
-            delay: 0.1,
+            delay: 0.05,
           },
         );
 
@@ -54,130 +59,137 @@ const HeroSection = ({ logoSrc = "/logo_fruco.avif" }: HeroSectionProps) => {
             scale: 1,
             rotateZ: 0,
             y: 0,
-            duration: 0.15,
+            duration: 0.12,
             ease: "back.out(2)",
-            stagger: 0.03, // Efecto de escritura letra por letra
-            delay: 0.9,
+            stagger: 0.02, // Efecto de escritura letra por letra más rápido
+            delay: 0.6,
+            onComplete: () => {
+              // Disparar evento personalizado cuando termine la animación del hero
+              window.dispatchEvent(new CustomEvent("heroAnimationComplete"));
+            },
           },
         );
       }
-    }, 100); // Pequeño delay para permitir el renderizado del logo
+    }, 50); // Delay reducido para renderizado del logo
 
     return () => clearTimeout(timer);
   }, [subtitleChars]);
 
-  // Animación del scroll indicator
+  // Detectar cuando el logo principal sale del viewport
   useEffect(() => {
-    if (scrollIndicatorRef.current) {
-      gsap.fromTo(
-        scrollIndicatorRef.current,
-        {
-          y: -6,
-          opacity: 0,
-        },
-        {
-          y: 24,
+    const handleScroll = () => {
+      if (logoRef.current) {
+        const rect = logoRef.current.getBoundingClientRect();
+        // El logo sticky aparece solo cuando el logo principal está completamente fuera de la vista (arriba)
+        // y desaparece cuando el logo principal vuelve a ser visible
+        setShowStickyLogo(rect.bottom < 0);
+      }
+    };
+
+    // Ejecutar una vez al inicio para establecer el estado inicial
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Animar el logo sticky cuando aparece y desaparece
+  useEffect(() => {
+    if (stickyLogoRef.current) {
+      if (showStickyLogo) {
+        gsap.to(stickyLogoRef.current, {
           opacity: 1,
-          duration: 1.5,
-          ease: "power2.inOut",
-          repeat: -1,
-          yoyo: true,
-          repeatDelay: 0,
-        },
-      );
+          x: 0,
+          duration: 0.4,
+          ease: "power2.out",
+        });
+      } else {
+        gsap.to(stickyLogoRef.current, {
+          opacity: 0,
+          x: -20,
+          duration: 0.3,
+          ease: "power2.in",
+        });
+      }
     }
-  }, []);
-
-  // Efecto de parallax sutil en el contenedor
-  useEffect(() => {
-    if (containerRef.current) {
-      const handleMouseMove = (e: MouseEvent) => {
-        const { clientX, clientY } = e;
-        const { innerWidth, innerHeight } = window;
-
-        const xPos = (clientX / innerWidth - 0.5) * 20;
-        const yPos = (clientY / innerHeight - 0.5) * 20;
-
-        if (logoRef.current) {
-          logoRef.current.style.transform = `translate(${xPos * 0.5}px, ${yPos * 0.5}px)`;
-        }
-      };
-
-      window.addEventListener("mousemove", handleMouseMove);
-
-      return () => {
-        window.removeEventListener("mousemove", handleMouseMove);
-      };
-    }
-  }, []);
+  }, [showStickyLogo]);
 
   return (
-    <section
-      ref={containerRef}
-      className="section-container relative overflow-hidden"
-      id="inicio"
-    >
-      {/* Contenido principal */}
-      <div className="text-center z-10 relative">
-        {/* Logo */}
-        <div className="mb-12">
+    <>
+      {/* Logo sticky en la esquina superior izquierda */}
+      <div
+        ref={stickyLogoRef}
+        className={`fixed top-0 left-4 z-50 w-full md:w-auto bg-black transition-opacity duration-300 ${
+          showStickyLogo
+            ? "pointer-events-auto"
+            : "opacity-0 pointer-events-none"
+        }`}
+      >
+        <a href="#inicio" className="block">
           <img
-            ref={logoRef}
-            src={logoSrc}
-            alt="Fruco Logo"
-            className="mx-auto max-w-xs md:max-w-sm lg:max-w-md transition-transform duration-300 ease-out"
-            style={{
-              willChange: "transform, opacity",
-              opacity: 0,
-              transform: "translateY(20px) translateZ(0)",
-            }}
-            width={600}
+            src={topSrc}
+            alt="Fruco"
+            className="w-20 md:w-24 lg:w-28 hover:scale-110 transition-transform duration-300"
+            width={400}
             height={334}
-            fetchPriority="high"
-            loading="eager"
-            decoding="sync"
-            sizes="(max-width: 768px) 320px, (max-width: 1024px) 384px, 448px"
           />
-        </div>
+        </a>
+      </div>
 
-        {/* Subtítulo */}
-        <h1
-          ref={subtitleRef}
-          className="text-2xl md:text-4xl lg:text-5xl text-gray-300 max-w-3xl mx-auto leading-relaxed font-light"
-          style={{
-            fontFamily: "'Caveat', cursive",
-            willChange: "transform, opacity",
-          }}
-        >
-          {subtitleChars.map((char, index) => (
-            <span
-              key={index}
-              className="char inline-block"
+      <section
+        ref={containerRef}
+        className="relative overflow-hidden flex items-center justify-center pt-30 pb-10"
+        id="inicio"
+      >
+        {/* Contenido principal */}
+        <div className="text-center z-10 relative max-w-4xl mx-auto px-4">
+          {/* Logo */}
+          <div className="mb-6">
+            <img
+              ref={logoRef}
+              src={logoSrc}
+              alt="Fruco Logo"
+              className="mx-auto w-48 md:w-64 lg:w-72 transition-transform duration-300 ease-out"
               style={{
+                willChange: "transform, opacity",
                 opacity: 0,
-                display: char === " " ? "inline" : "inline-block",
-                whiteSpace: char === " " ? "pre" : "normal",
+                transform: "translateY(20px) translateZ(0)",
               }}
-            >
-              {char}
-            </span>
-          ))}
-        </h1>
-      </div>
+              width={400}
+              height={334}
+              fetchPriority="high"
+              loading="eager"
+              decoding="sync"
+              sizes="(max-width: 768px) 192px, (max-width: 1024px) 256px, 288px"
+            />
+          </div>
 
-      {/* Indicador de scroll */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center space-y-2 z-20">
-        <span className="text-white/60 text-xs font-light tracking-widest uppercase">
-          {t.hero.scrollIndicator}
-        </span>
-        <div className="w-[4px] h-8 bg-gradient-to-b from-white/60 to-transparent relative overflow-hidden">
-          <div
-            ref={scrollIndicatorRef}
-            className="absolute top-0 left-0 w-full h-2 bg-white"
-          />
+          {/* Subtítulo */}
+          <h1
+            ref={subtitleRef}
+            className="text-2xl md:text-3xl lg:text-4xl text-gray-300 leading-relaxed font-light"
+            style={{
+              fontFamily: "'Caveat', cursive",
+              willChange: "transform, opacity",
+            }}
+          >
+            {subtitleChars.map((char, index) => (
+              <span
+                key={index}
+                className="char inline-block"
+                style={{
+                  opacity: 0,
+                  display: char === " " ? "inline" : "inline-block",
+                  whiteSpace: char === " " ? "pre" : "normal",
+                }}
+              >
+                {char}
+              </span>
+            ))}
+          </h1>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 

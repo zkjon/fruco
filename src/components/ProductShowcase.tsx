@@ -1,6 +1,6 @@
-import { useRef, useState } from "preact/hooks";
+import { useRef, useState, useEffect } from "preact/hooks";
 import { memo } from "preact/compat";
-import { useProductGrid, useFadeIn } from "@/hooks/useGSAP";
+import { gsap } from "gsap";
 import { useLazyImage } from "@/hooks/useLazyImage";
 import { Product } from "../lib/Products";
 import { useTranslations } from "../hooks/useI18n";
@@ -96,7 +96,7 @@ const ProductDetails = memo(
           {/* Contenido principal */}
           <div className="flex flex-col lg:flex-row">
             {/* Imagen del producto */}
-            <div className="lg:w-1/2 p-4 flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100">
+            <div className="lg:w-1/2 p-4 flex items-center justify-center bg-linear-to-br from-gray-50 to-gray-100">
               <div className="relative w-full max-w-md">
                 <img
                   src={product.imageSrc.replace(
@@ -139,7 +139,7 @@ const ProductDetails = memo(
                   </div>
 
                   {/* Tabla nutricional */}
-                  <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl overflow-hidden border border-gray-200">
+                  <div className="bg-linear-to-br from-gray-50 to-gray-100 rounded-xl overflow-hidden border border-gray-200">
                     <table className="w-full">
                       <thead>
                         <tr className="bg-gradient-to-r from-gray-100 to-gray-50">
@@ -201,7 +201,7 @@ const ProductDetails = memo(
                       {t.products.nutritionalInfo.orderText}
                     </span>
                   </div>
-                  <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-3 border border-gray-200">
+                  <div className="bg-linear-to-br from-gray-50 to-gray-100 rounded-xl p-3 border border-gray-200">
                     <p className="text-gray-700 leading-relaxed text-sm">
                       {product.ingredients.join(", ")}.
                     </p>
@@ -224,9 +224,9 @@ const InfoCard = memo(
     infoCard: { title: string; subtitle: string; quality: string };
   }) => {
     return (
-      <div className="relative bg-gradient-to-br from-fruco-red via-fruco-red/90 to-fruco-red/80 rounded-3xl overflow-hidden border-2 border-fruco-red/50 w-full max-w-sm text-left h-full flex flex-col shadow-xl shadow-fruco-red/20">
+      <div className="relative bg-linear-to-br from-fruco-red via-fruco-red/90 to-fruco-red/80 rounded-3xl overflow-hidden border-2 border-fruco-red/50 w-full max-w-sm text-left h-full flex flex-col shadow-xl shadow-fruco-red/20">
         {/* Efecto de brillo */}
-        <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-br from-white/10 via-transparent to-transparent" />
 
         {/* Patrón decorativo de fondo */}
         <div className="absolute inset-0 opacity-10">
@@ -331,8 +331,8 @@ const ProductCard = memo(
         onKeyDown={handleKeyDown}
         className={`product-item relative bg-white rounded-3xl overflow-hidden border-2 border-gray-200 transition-all duration-700 cursor-pointer group hover:scale-[1.02] hover:-translate-y-2 w-full max-w-sm text-left h-full flex flex-col ${
           isHidden
-            ? "opacity-0 scale-75 pointer-events-none"
-            : "opacity-100 scale-100"
+            ? "scale-75 pointer-events-none"
+            : "scale-100"
         } ${
           isSelected
             ? "ring-4 ring-fruco-red/60 shadow-2xl shadow-fruco-red/30 scale-[1.02] -translate-y-2 border-fruco-red"
@@ -340,16 +340,17 @@ const ProductCard = memo(
         }`}
         style={{
           willChange: "transform, box-shadow, opacity",
+          opacity: isHidden ? 0 : 0, // Iniciar con opacidad 0 para que GSAP la anime, pero mantener 0 si está oculto
         }}
       >
         {/* Efecto de brillo sutil */}
-        <div className="absolute inset-0 bg-gradient-to-br from-fruco-gold/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+        <div className="absolute inset-0 bg-linear-to-br from-fruco-gold/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
         {/* Borde dorado sutil */}
-        <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-fruco-red/10 via-transparent to-fruco-red/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+        <div className="absolute inset-0 rounded-3xl bg-linear-to-br from-fruco-red/10 via-transparent to-fruco-red/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
         {/* Imagen del producto */}
-        <div className="relative overflow-hidden aspect-square bg-gradient-to-br from-gray-50 to-gray-100 flex-shrink-0">
+        <div className="relative overflow-hidden aspect-square bg-linear-to-br from-gray-50 to-gray-100 shrink-0">
           {/* Overlay decorativo */}
           <div className="absolute inset-0 bg-gradient-to-t from-white/20 via-transparent to-transparent z-10" />
 
@@ -395,13 +396,13 @@ const ProductCard = memo(
 
         {/* Contenido */}
         <div
-          className="relative p-6 text-center bg-white flex-grow flex flex-col justify-between"
+          className="relative p-6 text-center bg-white grow flex flex-col justify-between"
           style={{ willChange: "transform" }}
         >
           {/* Línea decorativa superior */}
-          <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-16 h-0.5 bg-gradient-to-r from-transparent via-fruco-red/60 to-transparent" />
+          <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-16 h-0.5 bg-linear-to-r from-transparent via-fruco-red/60 to-transparent" />
 
-          <div className="flex-grow flex flex-col justify-center">
+          <div className="grow flex flex-col justify-center">
             <h3 className="text-lg font-bold mb-3 text-gray-900 group-hover:text-fruco-red transition-all duration-500 tracking-wide leading-tight min-h-[3.5rem] flex items-center justify-center">
               {product.name}
             </h3>
@@ -433,7 +434,7 @@ const ProductCard = memo(
           </div>
 
           {/* Línea decorativa inferior */}
-          <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-fruco-red/60 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700" />
+          <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-linear-to-r from-transparent via-fruco-red/60 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700" />
         </div>
       </button>
     );
@@ -448,10 +449,59 @@ const ProductShowcase = () => {
   const gridRef = useRef<HTMLDivElement>(null);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [showDetails, setShowDetails] = useState(false);
+  const [startAnimations, setStartAnimations] = useState(false);
 
-  // Animaciones
-  useFadeIn(titleRef);
-  useProductGrid(gridRef);
+  // Escuchar cuando el hero termine su animación
+  useEffect(() => {
+    const handleHeroComplete = () => {
+      setStartAnimations(true);
+    };
+
+    window.addEventListener('heroAnimationComplete', handleHeroComplete);
+
+    return () => {
+      window.removeEventListener('heroAnimationComplete', handleHeroComplete);
+    };
+  }, []);
+
+  // Animaciones secuenciales: primero el título, luego los productos
+  useEffect(() => {
+    if (startAnimations && titleRef.current && gridRef.current) {
+      // Animar título primero
+      gsap.fromTo(
+        titleRef.current,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          ease: "power2.out",
+          onComplete: () => {
+            // Cuando termine el título, animar los productos
+            const products = gridRef.current?.querySelectorAll('.product-item');
+            if (products) {
+              gsap.fromTo(
+                products,
+                {
+                  opacity: 0,
+                  y: 50,
+                  scale: 0.9,
+                },
+                {
+                  opacity: 1,
+                  y: 0,
+                  scale: 1,
+                  duration: 0.4,
+                  ease: "power2.out",
+                  stagger: 0.08,
+                },
+              );
+            }
+          }
+        }
+      );
+    }
+  }, [startAnimations]);
 
   // Funciones para manejar la selección de productos
   const handleProductClick = (product: Product) => {
@@ -475,8 +525,8 @@ const ProductShowcase = () => {
         <div className="text-center mb-16">
           <h2
             ref={titleRef}
-            className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-white"
-            style={{ willChange: "transform, opacity" }}
+            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white"
+            style={{ willChange: "transform, opacity", opacity: 0 }}
           >
             {t.products.titlePrefix}
             <span className="block text-white">{t.products.title}</span>

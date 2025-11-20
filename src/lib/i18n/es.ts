@@ -158,7 +158,7 @@ export const es: Translations = {
     content: [
       "Nuestros tomates son fruto del trabajo de nuestros propios agricultores, que cuidan la tierra con paciencia y sabiduría, como se ha hecho toda la vida.",
       "En Fruco creemos en la tradición, en la calidad que se cultiva día a día y en el compromiso de ofrecer lo mejor. Fabricamos salsas y creamos experiencias que unen a las personas en momentos especiales. Queremos formar parte de tu historia, de tu mesa y de tu vida.",
-      "Porque Fruco, es una familia que elige lo auténtico, lo honesto… lo que está hecho con el corazón",
+      "Fruco es una familia que elige lo auténtico, lo honesto… lo que está hecho con el corazón",
     ],
     elements: {
       artesania: "Artesanía",
@@ -174,6 +174,18 @@ export const es: Translations = {
       email: "info@fruco.es",
       phone: "660 85 80 90",
       address: "Mérida, España",
+    },
+    locations: {
+      title: "Encuéntranos",
+      merida: {
+        name: "Mérida",
+        address:
+          "Carretera Sevilla, 0 S N Pc 1-2 ( Pol Ind El Prado ), 06800 Mérida, Badajoz",
+      },
+      montijo: {
+        name: "Montijo",
+        address: "Ctra. Estación, sn, 06480 Montijo, Badajoz",
+      },
     },
   },
   footer: {

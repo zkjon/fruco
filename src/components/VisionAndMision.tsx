@@ -130,7 +130,7 @@ function VisionMision() {
   return (
     <section
       ref={sectionRef}
-      className="relative py-20 px-6 bg-gradient-to-b from-fruco-black via-fruco-black/95 to-fruco-black"
+      className="relative py-20 px-6 bg-linear-to-b from-fruco-black via-fruco-black/95 to-fruco-black"
       id="vision-mision"
     >
       <div className="max-w-4xl mx-auto text-center">
@@ -180,7 +180,7 @@ function VisionMision() {
               key={element.id}
               className="w-full md:w-1/3 relative vision-element flex justify-center items-center"
             >
-              <div className="relative w-48 h-48 md:w-40 md:h-40 lg:w-52 lg:h-52 flex-shrink-0">
+              <div className="relative w-48 h-48 md:w-40 md:h-40 lg:w-52 lg:h-52 shrink-0">
                 <img
                   ref={imgRef}
                   data-src={element.image}
