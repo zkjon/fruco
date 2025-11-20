@@ -330,9 +330,7 @@ const ProductCard = memo(
         onClick={() => onClick(product)}
         onKeyDown={handleKeyDown}
         className={`product-item relative bg-white rounded-3xl overflow-hidden border-2 border-gray-200 transition-all duration-700 cursor-pointer group hover:scale-[1.02] hover:-translate-y-2 w-full max-w-sm text-left h-full flex flex-col ${
-          isHidden
-            ? "scale-75 pointer-events-none"
-            : "scale-100"
+          isHidden ? "scale-75 pointer-events-none" : "scale-100"
         } ${
           isSelected
             ? "ring-4 ring-fruco-red/60 shadow-2xl shadow-fruco-red/30 scale-[1.02] -translate-y-2 border-fruco-red"
@@ -457,10 +455,10 @@ const ProductShowcase = () => {
       setStartAnimations(true);
     };
 
-    window.addEventListener('heroAnimationComplete', handleHeroComplete);
+    window.addEventListener("heroAnimationComplete", handleHeroComplete);
 
     return () => {
-      window.removeEventListener('heroAnimationComplete', handleHeroComplete);
+      window.removeEventListener("heroAnimationComplete", handleHeroComplete);
     };
   }, []);
 
@@ -478,7 +476,7 @@ const ProductShowcase = () => {
           ease: "power2.out",
           onComplete: () => {
             // Cuando termine el título, animar los productos
-            const products = gridRef.current?.querySelectorAll('.product-item');
+            const products = gridRef.current?.querySelectorAll(".product-item");
             if (products) {
               gsap.fromTo(
                 products,
@@ -497,8 +495,8 @@ const ProductShowcase = () => {
                 },
               );
             }
-          }
-        }
+          },
+        },
       );
     }
   }, [startAnimations]);

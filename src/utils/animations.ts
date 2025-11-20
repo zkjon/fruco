@@ -168,7 +168,10 @@ export const heroEntrance = (elements: {
 };
 
 // Función para animación de productos en grid
-export const productGridAnimation = (container: string | Element, immediate: boolean = false) => {
+export const productGridAnimation = (
+  container: string | Element,
+  immediate: boolean = false,
+) => {
   let products: Element[];
 
   if (typeof container === "string") {

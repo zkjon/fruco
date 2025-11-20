@@ -156,9 +156,12 @@ export const useHeroEntrance = (
 };
 
 // Hook para animación de grid de productos
-export const useProductGrid = (containerRef: {
-  current: HTMLElement | null;
-}, immediate: boolean = false) => {
+export const useProductGrid = (
+  containerRef: {
+    current: HTMLElement | null;
+  },
+  immediate: boolean = false,
+) => {
   const { addAnimation } = useGSAP();
 
   useEffect(() => {
