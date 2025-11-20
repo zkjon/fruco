@@ -1,9 +1,41 @@
 ---
 import CookieBanner from "@/components/CookieBanner.astro";
 
-const { title, lang = "es" } = Astro.props;
-const description =
-  "Descubre Fruco, la auténtica salsa de tomate española con más de 60 años de tradición. Ingredientes naturales, sabor casero y calidad premium desde 1959.";
+interface Props {
+  title: string;
+  lang?: string;
+  description?: string;
+  keywords?: string;
+  ogImage?: string;
+  ogType?: string;
+  canonical?: string;
+  noindex?: boolean;
+}
+
+const {
+  title,
+  lang = "es",
+  description = "Descubre Fruco, la auténtica salsa de tomate española con más de 60 años de tradición. Ingredientes naturales, sabor casero y calidad premium desde 1959.",
+  keywords = "fruco, salsa tomate, salsa, tomate, tradicional, salsa española, tomate natural, tradición 1959, salsa casera, ingredientes naturales, tomate premium, salsa artesanal, cocina española, conservas, productos naturales, recetas con tomate, salsa mediterránea, made in spain",
+  ogImage = "/logo_fruco.svg",
+  ogType = "website",
+  canonical,
+  noindex = false,
+} = Astro.props;
+
+const SITE_URL = "https://fruco.es";
+const currentUrl = canonical || `${SITE_URL}${Astro.url.pathname}`;
+const fullImageUrl = ogImage.startsWith("http")
+  ? ogImage
+  : `${SITE_URL}${ogImage}`;
+
+// Alternate languages for hreflang
+const alternateLanguages = {
+  es: "Español",
+  en: "English",
+  fr: "Français",
+  pt: "Português",
+};
 ---
 
 <!doctype html>
@@ -11,15 +43,33 @@ const description =
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		
+		<!-- Title and Basic SEO -->
 		<title>{title}</title>
-
 		<meta name="description" content={description} />
-		<meta
-			name="keywords"
-			content="fruco, salsa tomate, salsa, tomate, tradicional, salsa española, tomate natural, tradición 1959, salsa casera, ingredientes naturales, tomate premium, salsa artesanal, cocina española"
-		/>
-		<meta name="author" content="Jon Imanol Ruiz Hermoso" />
-		<meta name="robots" content="index, follow" />
+		<meta name="keywords" content={keywords} />
+		<meta name="author" content="CARNES Y VEGETALES S.L." />
+		<meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"} />
+		<meta name="googlebot" content="index, follow" />
+		
+		<!-- Canonical URL -->
+		<link rel="canonical" href={currentUrl} />
+		
+		<!-- Alternate Languages (hreflang) -->
+		{Object.keys(alternateLanguages).map((langCode) => (
+			<link rel="alternate" hreflang={langCode} href={`${SITE_URL}${Astro.url.pathname}`} />
+		))}
+		<link rel="alternate" hreflang="x-default" href={`${SITE_URL}${Astro.url.pathname}`} />
+		
+		<!-- Geographic and Business Info -->
+		<meta name="geo.region" content="ES-BA" />
+		<meta name="geo.placename" content="Mérida" />
+		<meta name="geo.position" content="38.9157;-6.3369" />
+		<meta name="ICBM" content="38.9157, -6.3369" />
+		
+		<!-- Revisit and Cache Control -->
+		<meta name="revisit-after" content="7 days" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
 		<!-- FAVICONS -->
 		<link rel="icon" href="/favicon/favicon.ico" />
@@ -56,26 +106,130 @@ const description =
 			/></noscript
 		>
 
-		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:title" content={title} />
-		<meta name="twitter:description" content={description} />
-		<meta name="twitter:image" content="/logo_fruco.svg" />
-
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content={ogType} />
+		<meta property="og:url" content={currentUrl} />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
-		<meta property="og:image" content="/logo_fruco.svg" />
-		<meta property="og:type" content="website" />
-		<meta property="og:url" content="https://fruco.es/" />
+		<meta property="og:image" content={fullImageUrl} />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta property="og:image:alt" content="Fruco - Salsa de Tomate Tradicional" />
+		<meta property="og:site_name" content="Fruco" />
+		<meta property="og:locale" content={`${lang}_ES`} />
+		{Object.keys(alternateLanguages).filter(l => l !== lang).map((langCode) => (
+			<meta property="og:locale:alternate" content={`${langCode}_ES`} />
+		))}
+		
+		<!-- Twitter Card -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:url" content={currentUrl} />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={fullImageUrl} />
+		<meta name="twitter:image:alt" content="Fruco - Salsa de Tomate Tradicional" />
+		<meta name="twitter:creator" content="@fruco_oficial" />
+		<meta name="twitter:site" content="@fruco_oficial" />
 
-		<script type="application/ld+json" is:inline>
-			{
-				"@context": "https://schema.org",
-				"@type": "Organization",
-				"name": "Fruco",
-				"url": "https://fruco.es/",
-				"logo": "https://fruco.es/logo_fruco.svg"
-			}
-		</script>
+		<!-- Structured Data - JSON-LD -->
+		<script type="application/ld+json" is:inline set:html={JSON.stringify({
+			"@context": "https://schema.org",
+			"@graph": [
+				{
+					"@type": "Organization",
+					"@id": "https://fruco.es/#organization",
+					"name": "Fruco - CARNES Y VEGETALES S.L.",
+					"url": "https://fruco.es/",
+					"logo": {
+						"@type": "ImageObject",
+						"url": "https://fruco.es/logo_fruco.svg",
+						"width": 400,
+						"height": 334
+					},
+					"image": "https://fruco.es/logo_fruco.svg",
+					"description": description,
+					"address": {
+						"@type": "PostalAddress",
+						"streetAddress": "C/ Sevilla, parcelas 1 y 2, Polígono Industrial El Prado",
+						"addressLocality": "Mérida",
+						"addressRegion": "Badajoz",
+						"postalCode": "06800",
+						"addressCountry": "ES"
+					},
+					"contactPoint": {
+						"@type": "ContactPoint",
+						"telephone": "+34-924-330-170",
+						"contactType": "customer service",
+						"email": "info@fruco.es",
+						"areaServed": "ES",
+						"availableLanguage": ["Spanish", "English", "French", "Portuguese"]
+					},
+					"sameAs": [
+						"https://www.facebook.com/profile.php?id=61583976511602",
+						"https://www.instagram.com/fruco_oficial/"
+					],
+					"foundingDate": "1959",
+					"founder": {
+						"@type": "Person",
+						"name": "Fundadores Fruco"
+					}
+				},
+				{
+					"@type": "LocalBusiness",
+					"@id": "https://fruco.es/#localbusiness",
+					"name": "Fruco",
+					"image": "https://fruco.es/logo_fruco.svg",
+					"priceRange": "$$",
+					"address": {
+						"@type": "PostalAddress",
+						"streetAddress": "C/ Sevilla, parcelas 1 y 2, Polígono Industrial El Prado",
+						"addressLocality": "Mérida",
+						"addressRegion": "Badajoz",
+						"postalCode": "06800",
+						"addressCountry": "ES"
+					},
+					"geo": {
+						"@type": "GeoCoordinates",
+						"latitude": 38.9157,
+						"longitude": -6.3369
+					},
+					"telephone": "+34-924-330-170",
+					"email": "info@fruco.es",
+					"openingHoursSpecification": {
+						"@type": "OpeningHoursSpecification",
+						"dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+						"opens": "09:00",
+						"closes": "18:00"
+					}
+				},
+				{
+					"@type": "WebSite",
+					"@id": "https://fruco.es/#website",
+					"url": "https://fruco.es/",
+					"name": "Fruco",
+					"description": description,
+					"publisher": {
+						"@id": "https://fruco.es/#organization"
+					},
+					"inLanguage": [lang, "es", "en", "fr", "pt"]
+				},
+				{
+					"@type": "WebPage",
+					"@id": currentUrl + "#webpage",
+					"url": currentUrl,
+					"name": title,
+					"description": description,
+					"isPartOf": {
+						"@id": "https://fruco.es/#website"
+					},
+					"about": {
+						"@id": "https://fruco.es/#organization"
+					},
+					"inLanguage": lang
+				}
+			]
+		})} />
+
 
 		<!-- Google Analytics 4 - Load only if consent exists -->
 		<script is:inline>
