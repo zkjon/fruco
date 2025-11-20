@@ -1,8 +1,28 @@
 ---
-import Layout from '@/layouts/Layout.astro';
-import App from '@/pages/_App';
+import Layout from "@/layouts/Layout.astro";
+import { faqSchema, productsSchema } from "@/lib/seo-schemas";
+import App from "@/pages/_App";
 ---
 
-<Layout title="Fruco - Salsa de Tomate Tradicional desde 1959">
-	<App client:load />
+<Layout
+  title="Fruco - Salsa de Tomate Tradicional Española desde 1959 | Calidad Premium"
+  description="Descubre Fruco, la auténtica salsa de tomate española con más de 60 años de tradición. Ingredientes 100% naturales, receta casera y sabor inigualable. Made in Spain."
+  keywords="fruco, salsa tomate española, tomate frito, salsa tradicional, tomate natural, salsa premium, conservas españa, productos naturales, recetas tomate, salsa mediterránea, made in spain, fruco 1959, salsa artesanal, tomate de calidad"
+  ogImage="/products/optimized/large/fruco_clasico.avif"
+>
+  <!-- Additional Structured Data for Products and FAQ -->
+  <script
+    type="application/ld+json"
+    is:inline
+    set:html={JSON.stringify(productsSchema)}
+    slot="head"
+  />
+  <script
+    type="application/ld+json"
+    is:inline
+    set:html={JSON.stringify(faqSchema)}
+    slot="head"
+  />
+
+  <App client:load />
 </Layout>
