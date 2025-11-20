@@ -119,7 +119,7 @@ export const es: Translations = {
       },
       "pasta-pizza": {
         name: "Pasta & Pizza",
-        description: "Perfecta combinación para tus platos italianos favoritos",
+        description: "Perfecta combinación para tus platos favoritos",
         detailedDescription:
           "Salsa de color rojizo elaborada por mezcla de tomate y concentrado de tomate, con aceite, sal y especias. Es espesa, consistente, si bien, su viscosidad le permite fluir fácilmente.",
         ingredients: [

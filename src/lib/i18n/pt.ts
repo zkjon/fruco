@@ -118,7 +118,7 @@ export const pt: Translations = {
       },
       "pasta-pizza": {
         name: "Massa & Pizza",
-        description: "Combinação perfeita para seus pratos italianos favoritos",
+        description: "Combinação perfeita para seus pratos  favoritos",
         detailedDescription:
           "Molho de cor avermelhada elaborado por mistura de tomate e concentrado de tomate, com óleo, sal e especiarias. É espesso, consistente, embora sua viscosidade permita fluir facilmente.",
         ingredients: [

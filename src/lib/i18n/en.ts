@@ -118,7 +118,7 @@ export const en: Translations = {
       },
       "pasta-pizza": {
         name: "Pasta & Pizza",
-        description: "Perfect combination for your favorite Italian dishes",
+        description: "Perfect combination for your favorite dishes",
         detailedDescription:
           "Reddish sauce made by mixing tomato and tomato concentrate, with oil, salt and spices. It is thick, consistent, although its viscosity allows it to flow easily.",
         ingredients: [
