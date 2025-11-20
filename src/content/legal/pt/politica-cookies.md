@@ -36,11 +36,13 @@ Os cookies de marketing/rastreamento são cookies, ou qualquer outra forma de ar
 
 ## 6. Cookies utilizados no nosso site
 
-### Google Tag Manager e Google Analytics
+### Google Analytics 4
 
 **Propósito:** Estatísticas e análise de tráfego web
 
-Utilizamos o Google Tag Manager (GTM) para gerir etiquetas de rastreamento no nosso site. Através do GTM, implementamos o Google Analytics 4 para recolher informações estatísticas sobre como os visitantes utilizam o nosso site.
+Utilizamos o Google Analytics 4 (GA4) para recolher informações estatísticas sobre como os visitantes utilizam o nosso site. Esta ferramenta ajuda-nos a compreender melhor as necessidades dos nossos utilizadores e a melhorar a experiência de navegação.
+
+**ID de medição:** G-Z7SJT3Z527
 
 **Dados recolhidos:**
 - Páginas visitadas

@@ -15,14 +15,14 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-linear-to-b from-gray-900 to-black text-gray-300 border-t border-fruco-gold/20">
+    <footer className="text-gray-300 border-t border-fruco-gold/20 mt-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Footer Content */}
         <div className="py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand Section */}
           <div className="lg:col-span-1">
             <img
-              src="/logo_fruco.svg"
+              src="/top_icon.avif"
               alt="Fruco"
               className="h-16 w-auto mb-4"
               loading="lazy"
@@ -190,10 +190,7 @@ export default function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
             <p>
               © 2025 CARNES Y VEGETALES S.L. {"·"} {t.footer.rights}
-            </p>
-            <p className="text-xs">
-              {t.footer.made} ❤️ {t.footer.in} España
-            </p>
+            </p>{" "}
           </div>
         </div>
       </div>

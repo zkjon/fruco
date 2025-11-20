@@ -36,11 +36,13 @@ Les cookies de marketing/suivi sont des cookies, ou toute autre forme de stockag
 
 ## 6. Cookies utilisés sur notre site web
 
-### Google Tag Manager et Google Analytics
+### Google Analytics 4
 
 **Objectif :** Statistiques et analyse du trafic web
 
-Nous utilisons Google Tag Manager (GTM) pour gérer les balises de suivi sur notre site web. Via GTM, nous implémentons Google Analytics 4 pour collecter des informations statistiques sur la façon dont les visiteurs utilisent notre site web.
+Nous utilisons Google Analytics 4 (GA4) pour collecter des informations statistiques sur la façon dont les visiteurs utilisent notre site web. Cet outil nous aide à mieux comprendre les besoins de nos utilisateurs et à améliorer l'expérience de navigation.
+
+**ID de mesure :** G-Z7SJT3Z527
 
 **Données collectées :**
 - Pages visitées

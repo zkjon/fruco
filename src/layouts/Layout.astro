@@ -80,27 +80,28 @@ const description =
 			}
 		</script>
 
-		<!-- Google Tag Manager - Load only if consent exists -->
+		<!-- Google Analytics 4 - Load only if consent exists -->
 		<script is:inline>
 			(function() {
 				const consent = localStorage.getItem('cookie-consent');
 				if (consent === 'accepted') {
-					(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-					new Date().getTime(),event:'gtm.js'});const f=d.getElementsByTagName(s)[0],
-		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-					'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-					})(window,document,'script','dataLayer','GTM-N8RTM4VP');
+					// Load gtag.js script
+					const script = document.createElement('script');
+					script.async = true;
+					script.src = 'https://www.googletagmanager.com/gtag/js?id=G-Z7SJT3Z527';
+					document.head.appendChild(script);
+					
+					// Initialize dataLayer and gtag
+					window.dataLayer = window.dataLayer || [];
+					function gtag(){window.dataLayer.push(arguments);}
+					gtag('js', new Date());
+					gtag('config', 'G-Z7SJT3Z527');
 				}
 			})();
 		</script>
-		<!-- End Google Tag Manager -->
+		<!-- End Google Analytics 4 -->
 	</head>
 	<body>
-		<!-- Google Tag Manager (noscript) -->
-		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N8RTM4VP"
-		height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-		<!-- End Google Tag Manager (noscript) -->
-
 		<Analytics />
 		<SpeedInsights />
 		<CookieBanner language={lang} client:load />

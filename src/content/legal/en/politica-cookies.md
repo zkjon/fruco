@@ -36,11 +36,13 @@ Marketing/tracking cookies are cookies, or any other form of local storage, used
 
 ## 6. Cookies used on our website
 
-### Google Tag Manager and Google Analytics
+### Google Analytics 4
 
 **Purpose:** Statistics and web traffic analysis
 
-We use Google Tag Manager (GTM) to manage tracking tags on our website. Through GTM, we implement Google Analytics 4 to collect statistical information about how visitors use our website.
+We use Google Analytics 4 (GA4) to collect statistical information about how visitors use our website. This tool helps us better understand our users' needs and improve the browsing experience.
+
+**Measurement ID:** G-Z7SJT3Z527
 
 **Data collected:**
 - Pages visited

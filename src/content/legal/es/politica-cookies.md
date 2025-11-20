@@ -36,11 +36,13 @@ Las cookies de marketing/seguimiento son cookies, o cualquier otra forma de alma
 
 ## 6. Cookies utilizadas en nuestra web
 
-### Google Tag Manager y Google Analytics
+### Google Analytics 4
 
 **Propósito:** Estadísticas y análisis de tráfico web
 
-Utilizamos Google Tag Manager (GTM) para gestionar etiquetas de seguimiento en nuestra web. A través de GTM implementamos Google Analytics 4 para recopilar información estadística sobre cómo los visitantes utilizan nuestra web.
+Utilizamos Google Analytics 4 (GA4) para recopilar información estadística sobre cómo los visitantes utilizan nuestra web. Esta herramienta nos ayuda a entender mejor las necesidades de nuestros usuarios y mejorar la experiencia de navegación.
+
+**ID de medición:** G-Z7SJT3Z527
 
 **Datos recopilados:**
 - Páginas visitadas
