@@ -397,7 +397,7 @@ if (process.env.NODE_ENV === "development") {
   <meta property="og:description" content="..." />
   <meta property="og:image" content="/logo_fruco.svg" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://fruco.vercel.app/" />
+  <meta property="og:url" content="https://fruco.es/" />
 
   <!-- Twitter Cards -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -415,8 +415,8 @@ if (process.env.NODE_ENV === "development") {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Fruco",
-    "url": "https://fruco.vercel.app/",
-    "logo": "https://fruco.vercel.app/logo_fruco.svg",
+    "url": "https://fruco.es/",
+    "logo": "https://fruco.es/logo_fruco.svg",
     "description": "Salsa de tomate tradicional española desde 1959",
     "foundingDate": "1959",
     "address": {
@@ -433,13 +433,13 @@ if (process.env.NODE_ENV === "development") {
 User-agent: *
 Allow: /
 
-Sitemap: https://fruco.vercel.app/sitemap.xml
+Sitemap: https://fruco.es/sitemap.xml
 ```
 
 #### 4. **Canonical URLs**
 
 ```html
-<link rel="canonical" href="https://fruco.vercel.app/" />
+<link rel="canonical" href="https://fruco.es/" />
 ```
 
 ### Mejoras de Core Web Vitals
@@ -642,7 +642,7 @@ Distribución geográfica:
 npm install -g @lhci/cli
 
 # Test de performance
-lhci autorun --collect.url=https://fruco.vercel.app
+lhci autorun --collect.url=https://fruco.es
 
 # WebPageTest
 # https://www.webpagetest.org/

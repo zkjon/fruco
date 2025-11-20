@@ -1,14 +1,16 @@
 ---
-import Analytics from '@vercel/analytics/astro';
-import SpeedInsights from '@vercel/speed-insights/astro';
+import Analytics from "@vercel/analytics/astro";
+import SpeedInsights from "@vercel/speed-insights/astro";
 
-const { title } = Astro.props;
+import CookieBanner from "@/components/CookieBanner";
+
+const { title, lang = "es" } = Astro.props;
 const description =
-	'Descubre Fruco, la auténtica salsa de tomate española con más de 60 años de tradición. Ingredientes naturales, sabor casero y calidad premium desde 1959.';
+  "Descubre Fruco, la auténtica salsa de tomate española con más de 60 años de tradición. Ingredientes naturales, sabor casero y calidad premium desde 1959.";
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang={lang}>
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -66,21 +68,22 @@ const description =
 		<meta property="og:description" content={description} />
 		<meta property="og:image" content="/logo_fruco.svg" />
 		<meta property="og:type" content="website" />
-		<meta property="og:url" content="https://fruco.vercel.app/" />
+		<meta property="og:url" content="https://fruco.es/" />
 
 		<script type="application/ld+json" is:inline>
 			{
 				"@context": "https://schema.org",
 				"@type": "Organization",
 				"name": "Fruco",
-				"url": "https://fruco.vercel.app/",
-				"logo": "https://fruco.vercel.app/logo_fruco.svg"
+				"url": "https://fruco.es/",
+				"logo": "https://fruco.es/logo_fruco.svg"
 			}
 		</script>
 	</head>
 	<body>
 		<Analytics />
 		<SpeedInsights />
+		<CookieBanner language={lang} client:load />
 		<slot />
 	</body>
 </html>
