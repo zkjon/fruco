@@ -138,7 +138,7 @@ export const en: Translations = {
     highlights: [
       "More than 65 years of tradition since 1959",
       "Tomatoes grown by our own farmers",
-      "Artisanal production with love and dedication",
+      "Crafted with love, dedication and artisan tradition",
       "Commitment to authenticity and honesty",
     ],
     stats: {

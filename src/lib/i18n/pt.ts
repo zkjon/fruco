@@ -138,7 +138,7 @@ export const pt: Translations = {
     highlights: [
       "Mais de 65 anos de tradição desde 1959",
       "Tomates cultivados por nossos próprios agricultores",
-      "Elaboração artesanal com carinho e dedicação",
+      "Elaboração com carinho, dedicação e tradição artesanal",
       "Compromisso com a autenticidade e o honesto",
     ],
     stats: {
