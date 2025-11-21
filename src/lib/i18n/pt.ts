@@ -47,7 +47,7 @@ export const pt: Translations = {
     seeDetails: "Ver detalhes",
     close: "Fechar",
     qualityText:
-      "Cada produto Fruco é elaborado com os mais altos padrões de qualidade, utilizando ingredientes selecionados para oferecer uma experiência gastronômica excepcional.",
+      "Cada produto Fruco é elaborado sob os mais altos padrões de qualidade, com ingredientes cuidadosamente selecionados para oferecer uma experiência gastronômica excepcional.",
     items: {
       frito: {
         name: "Tomate frito",

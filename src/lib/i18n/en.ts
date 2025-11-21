@@ -46,7 +46,7 @@ export const en: Translations = {
     seeDetails: "See details",
     close: "Close",
     qualityText:
-      "Each Fruco product is crafted with the highest quality standards, using selected ingredients to offer you an exceptional gastronomic experience.",
+      "Each Fruco product is crafted under the highest quality standards, with carefully selected ingredients to offer you an exceptional gastronomic experience.",
     items: {
       frito: {
         name: "Fried Tomato",
