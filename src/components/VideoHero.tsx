@@ -1,5 +1,6 @@
 import { gsap } from "gsap";
 import { useEffect, useRef } from "preact/hooks";
+import { useTranslations } from "@/hooks/useI18n";
 
 interface VideoHeroProps {
   videoSrc?: string;
@@ -12,6 +13,9 @@ const VideoHero = ({
 }: VideoHeroProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLElement>(null);
+  const scrollIndicatorRef = useRef<HTMLDivElement>(null);
+  const arrowRef = useRef<SVGSVGElement>(null);
+  const t = useTranslations();
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -30,6 +34,32 @@ const VideoHero = ({
           },
         );
       }
+
+      // Animar el indicador de scroll
+      if (scrollIndicatorRef.current) {
+        gsap.fromTo(
+          scrollIndicatorRef.current,
+          { opacity: 0, y: -10 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            delay: 1.5,
+            ease: "power2.out",
+          },
+        );
+      }
+
+      // Animación de rebote continua solo para la flecha
+      if (arrowRef.current) {
+        gsap.to(arrowRef.current, {
+          y: 10,
+          duration: 1.5,
+          repeat: -1,
+          yoyo: true,
+          ease: "power1.inOut",
+        });
+      }
     }, 100);
 
     return () => clearTimeout(timer);
@@ -43,7 +73,7 @@ const VideoHero = ({
       <div className="relative w-full">
         <video
           ref={videoRef}
-          className="h-[30vh] w-full object-cover"
+          className="h-[55vh] w-full object-cover"
           poster={posterSrc}
           autoPlay
           muted
@@ -57,6 +87,28 @@ const VideoHero = ({
           <source src={videoSrc} type="video/mp4" />
           Tu navegador no soporta la reproducción de video.
         </video>
+
+        {/* Indicador de scroll */}
+        <div
+          ref={scrollIndicatorRef}
+          className="absolute bottom-8 left-1/2 h-16 -translate-x-1/2 opacity-0"
+        >
+          <span className="block text-center text-sm font-medium tracking-wider text-white drop-shadow-lg">
+            {t.hero.scrollIndicator}
+          </span>
+          <svg
+            ref={arrowRef}
+            className="absolute top-6 left-1/2 h-6 w-6 -translate-x-1/2 text-white drop-shadow-lg"
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+          </svg>
+        </div>
       </div>
     </section>
   );
