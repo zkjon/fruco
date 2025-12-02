@@ -204,20 +204,26 @@ const alternateLanguages = {
         },
       })}
     />
+    <!-- Google Analytics -->
     <script is:inline>
       (function () {
         const consent = localStorage.getItem("cookie-consent");
         if (consent === "accepted") {
+          // Load gtag.js script
           const script = document.createElement("script");
           script.async = true;
           script.src =
             "https://www.googletagmanager.com/gtag/js?id=G-PZ47W58H77";
           document.head.appendChild(script);
 
+          // Initialize dataLayer and gtag function
           window.dataLayer = window.dataLayer || [];
-          function gtag(...args) {
-            window.dataLayer.push(args);
+          function gtag() {
+            dataLayer.push(arguments);
           }
+          window.gtag = gtag;
+          
+          // Configure Google Analytics
           gtag("js", new Date());
           gtag("config", "G-PZ47W58H77");
         }
